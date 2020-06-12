@@ -37,7 +37,7 @@ namespace BookWorld
             int count = 0;
             string command = "Select Пароль from Пользователи Where Имя_Пользователя = @login";
             SqlParameter p1 = new SqlParameter("login", LoginTextBox.Text);
-            var reader = StaticProcesser.ExecuteCommand(command, p1);
+            var reader = StaticProcesser.GetReader(command, p1);
             while (reader.Read())
             {
                 count++;

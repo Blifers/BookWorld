@@ -87,6 +87,7 @@
             this.жанрыDataGridView.DataSource = this.жанрыBindingSource;
             this.жанрыDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.жанрыDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.жанрыDataGridView.MultiSelect = false;
             this.жанрыDataGridView.Name = "жанрыDataGridView";
             this.жанрыDataGridView.Size = new System.Drawing.Size(323, 307);
             this.жанрыDataGridView.TabIndex = 1;
@@ -108,7 +109,7 @@
             // 
             // ExitButton
             // 
-            this.ExitButton.Location = new System.Drawing.Point(447, 276);
+            this.ExitButton.Location = new System.Drawing.Point(446, 278);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(75, 23);
             this.ExitButton.TabIndex = 3;
@@ -144,12 +145,12 @@
             this.DeleteButton.TabIndex = 2;
             this.DeleteButton.Text = "Удалить";
             this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // СправочникЖанры
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 303);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(529, 309);
             this.ControlBox = false;
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditButton);

@@ -81,6 +81,12 @@
     <Compile Include="Справочники\Жанры\СправочникЖанры.Designer.cs">
       <DependentUpon>СправочникЖанры.cs</DependentUpon>
     </Compile>
+    <Compile Include="Справочники\ТипТовара\ДобавитьИзменитьТип.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Справочники\ТипТовара\ДобавитьИзменитьТип.Designer.cs">
+      <DependentUpon>ДобавитьИзменитьТип.cs</DependentUpon>
+    </Compile>
     <Compile Include="Справочники\ТипТовара\СправочникТипТовара.cs">
       <SubType>Form</SubType>
     </Compile>

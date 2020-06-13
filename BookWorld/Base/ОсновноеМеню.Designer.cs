@@ -30,18 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.справочникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.жанрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.типТовараToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.товарыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.продажаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.приходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчётыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.чатToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справочникиToolStripMenuItem});
+            this.справочникиToolStripMenuItem,
+            this.продажаToolStripMenuItem,
+            this.приходToolStripMenuItem,
+            this.отчётыToolStripMenuItem,
+            this.чатToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -61,23 +69,47 @@
             // жанрыToolStripMenuItem
             // 
             this.жанрыToolStripMenuItem.Name = "жанрыToolStripMenuItem";
-            this.жанрыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.жанрыToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.жанрыToolStripMenuItem.Text = "Жанры";
             this.жанрыToolStripMenuItem.Click += new System.EventHandler(this.жанрыToolStripMenuItem_Click);
             // 
             // типТовараToolStripMenuItem
             // 
             this.типТовараToolStripMenuItem.Name = "типТовараToolStripMenuItem";
-            this.типТовараToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.типТовараToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.типТовараToolStripMenuItem.Text = "Тип товара";
             this.типТовараToolStripMenuItem.Click += new System.EventHandler(this.типТовараToolStripMenuItem_Click);
             // 
             // товарыToolStripMenuItem
             // 
             this.товарыToolStripMenuItem.Name = "товарыToolStripMenuItem";
-            this.товарыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.товарыToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.товарыToolStripMenuItem.Text = "Товары";
             this.товарыToolStripMenuItem.Click += new System.EventHandler(this.товарыToolStripMenuItem_Click);
+            // 
+            // продажаToolStripMenuItem
+            // 
+            this.продажаToolStripMenuItem.Name = "продажаToolStripMenuItem";
+            this.продажаToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.продажаToolStripMenuItem.Text = "Продажа";
+            // 
+            // приходToolStripMenuItem
+            // 
+            this.приходToolStripMenuItem.Name = "приходToolStripMenuItem";
+            this.приходToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.приходToolStripMenuItem.Text = "Приход";
+            // 
+            // отчётыToolStripMenuItem
+            // 
+            this.отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
+            this.отчётыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.отчётыToolStripMenuItem.Text = "Отчёты";
+            // 
+            // чатToolStripMenuItem
+            // 
+            this.чатToolStripMenuItem.Name = "чатToolStripMenuItem";
+            this.чатToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.чатToolStripMenuItem.Text = "Чат";
             // 
             // ОсновноеМеню
             // 
@@ -107,6 +139,10 @@
         private System.Windows.Forms.ToolStripMenuItem жанрыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem типТовараToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem товарыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem продажаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem приходToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчётыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem чатToolStripMenuItem;
     }
 }
 

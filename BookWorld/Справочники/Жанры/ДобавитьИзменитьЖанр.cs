@@ -14,12 +14,12 @@ namespace BookWorld.Справочники.Жанры
 {
     public partial class ДобавитьИзменитьЖанр : Form
     {
-        public string Title;
-        public int Status;
-        public int NO;
-        public ДобавитьИзменитьЖанр(string title,int no)
+        private string Title;
+        private int Status;
+        private int ID;
+        public ДобавитьИзменитьЖанр(string title,int id)
         {
-            this.NO = no;
+            this.ID = id;
             this.Title = title;
             this.Status = 1;
             InitializeComponent();
@@ -33,7 +33,6 @@ namespace BookWorld.Справочники.Жанры
         private void ДобавитьИзменитьЖанр_Load(object sender, EventArgs e)
         {
             this.жанрыTableAdapter.Fill(this.bookWorldDataSet.Жанры);
-            жанрыTableAdapter.Fill(bookWorldDataSet.Жанры);
             TitleTextBox.Focus();
             if (this.Status == 1)
             {
@@ -78,7 +77,7 @@ namespace BookWorld.Справочники.Жанры
                 {
                     try
                     {
-                        жанрыTableAdapter.Update(TitleTextBox.Text, NO, Title);
+                        жанрыTableAdapter.Update(TitleTextBox.Text, ID, Title);
                         this.Validate();
                         this.tableAdapterManager.UpdateAll(bookWorldDataSet);
                         MessageBox.Show("Запись успешно изменена");

@@ -16,6 +16,7 @@ namespace BookWorld.Справочники
 {
     public partial class СправочникЖанры : Form
     {
+        
         public СправочникЖанры()
         {
             InitializeComponent();
@@ -50,8 +51,8 @@ namespace BookWorld.Справочники
             try
             {
                 string title = Convert.ToString(this.жанрыDataGridView.CurrentRow.Cells[1].Value);
-                int no = Convert.ToInt32(this.жанрыDataGridView.CurrentRow.Cells[0].Value);
-                ДобавитьИзменитьЖанр f = new ДобавитьИзменитьЖанр(title, no);
+                int id = Convert.ToInt32(this.жанрыDataGridView.CurrentRow.Cells[0].Value);
+                ДобавитьИзменитьЖанр f = new ДобавитьИзменитьЖанр(title, id);
                 f.ShowDialog();
                 this.жанрыTableAdapter.Fill(this.bookWorldDataSet.Жанры);
             }

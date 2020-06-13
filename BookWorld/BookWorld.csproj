@@ -93,6 +93,12 @@
     <Compile Include="Справочники\ТипТовара\СправочникТипТовара.Designer.cs">
       <DependentUpon>СправочникТипТовара.cs</DependentUpon>
     </Compile>
+    <Compile Include="Справочники\Товары\ДобавитьИзменитьТовары.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Справочники\Товары\ДобавитьИзменитьТовары.Designer.cs">
+      <DependentUpon>ДобавитьИзменитьТовары.cs</DependentUpon>
+    </Compile>
     <Compile Include="Справочники\Товары\СправочникТовары.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Справочники\Жанры\СправочникЖанры.resx">
       <DependentUpon>СправочникЖанры.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Справочники\ТипТовара\ДобавитьИзменитьТип.resx">
+      <DependentUpon>ДобавитьИзменитьТип.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Справочники\ТипТовара\СправочникТипТовара.resx">
       <DependentUpon>СправочникТипТовара.cs</DependentUpon>

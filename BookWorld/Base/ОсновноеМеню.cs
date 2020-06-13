@@ -33,25 +33,25 @@ namespace BookWorld
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.WindowState = FormWindowState.Maximized;
             //Убираем авторизацию пока не нужна
-            //this.Enabled = false;
+            this.Enabled = false;
 
-            //Авторизация f = new Авторизация();
-            //f.ShowDialog();
-            //if (User.Access == 0)
-            //{
-            //    try
-            //    {
-            //        this.Dispose();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        StaticHelper.ErrorNotifier(ex);
-            //    }
-            //}
-            //else if (User.Access == 1 || User.Access == 2)
-            //{
-            //    this.Enabled = true;
-            //}
+            Авторизация f = new Авторизация();
+            f.ShowDialog();
+            if (User.Access == 0)
+            {
+                try
+                {
+                    this.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    StaticHelper.ErrorNotifier(ex);
+                }
+            }
+            else if (User.Access == 1 || User.Access == 2)
+            {
+                this.Enabled = true;
+            }
         }
 
         private void жанрыToolStripMenuItem_Click(object sender, EventArgs e)

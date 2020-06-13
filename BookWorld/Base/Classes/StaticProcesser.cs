@@ -10,8 +10,17 @@ using System.Windows.Forms;
 
 namespace BookWorld.Base
 {
+    /// <summary>
+    /// Осуществляет выполнение базовых операций
+    /// </summary>
     public static class StaticProcesser
     {
+        /// <summary>
+        /// Хеширование строки
+        /// </summary>
+        /// <param name="input">Текст для хеширования</param>
+        /// <param name="algorithm">Алгоритм</param>
+        /// <returns>Возвращает захешированную строку</returns>
         public static string ComputeHash(string input,HashAlgorithm algorithm)
         {
             Byte[] inputBytes = Encoding.UTF8.GetBytes(input);
@@ -23,6 +32,12 @@ namespace BookWorld.Base
 
         public static SqlConnection Connection = new SqlConnection(Data.ConnectionString);
 
+        /// <summary>
+        /// Получение массива данных из запроса
+        /// </summary>
+        /// <param name="commandText">Текст запроса</param>
+        /// <param name="p1">Первый параметр</param>
+        /// <returns>Объект SqlReader с данными</returns>
         public static SqlDataReader GetReader(string commandText, SqlParameter p1)
         {
             SqlCommand Command = new SqlCommand();

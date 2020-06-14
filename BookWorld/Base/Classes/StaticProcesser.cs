@@ -1,6 +1,7 @@
 ﻿using BookWorld.Base.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Cryptography;
@@ -70,6 +71,30 @@ namespace BookWorld.Base
             Connection.Close();
             return amount;
         }
+
+        public static void FillDataGrid(string command,DataGridView dataGrid)
+        {
+            SqlCommand Command = new SqlCommand();
+            Command.Connection = Connection;
+            Command.CommandText = command;
+            SqlDataAdapter Adapter = new SqlDataAdapter(Command);
+            DataTable dt = new DataTable();
+            Adapter.Fill(dt);
+            dataGrid.DataSource = dt;
+        }
+
+        public static void FillDataGrid(string command,SqlParameter p1, DataGridView dataGrid)
+        {
+            SqlCommand Command = new SqlCommand();
+            Command.Connection = Connection;
+            Command.CommandText = command;
+            Command.Parameters.Add(p1);
+            SqlDataAdapter Adapter = new SqlDataAdapter(Command);
+            DataTable dt = new DataTable();
+            Adapter.Fill(dt);
+            dataGrid.DataSource = dt;
+        }
+
         public static void CloseConnection()
         {
             Connection.Close();

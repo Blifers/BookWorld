@@ -69,6 +69,18 @@
       <DependentUpon>BookWorldDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Продажа\НоваяПродажа.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Продажа\НоваяПродажа.Designer.cs">
+      <DependentUpon>НоваяПродажа.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Продажа\ПостоянныеКлиенты.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Продажа\ПостоянныеКлиенты.Designer.cs">
+      <DependentUpon>ПостоянныеКлиенты.cs</DependentUpon>
+    </Compile>
     <Compile Include="Справочники\Жанры\ДобавитьИзменитьЖанр.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,12 +105,6 @@
     <Compile Include="Справочники\ТипТовара\СправочникТипТовара.Designer.cs">
       <DependentUpon>СправочникТипТовара.cs</DependentUpon>
     </Compile>
-    <Compile Include="Справочники\Товары\ДобавитьИзменитьТовары.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Справочники\Товары\ДобавитьИзменитьТовары.Designer.cs">
-      <DependentUpon>ДобавитьИзменитьТовары.cs</DependentUpon>
-    </Compile>
     <Compile Include="Справочники\Товары\СправочникТовары.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Base\ОсновноеМеню.resx">
       <DependentUpon>ОсновноеМеню.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Продажа\НоваяПродажа.resx">
+      <DependentUpon>НоваяПродажа.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Продажа\ПостоянныеКлиенты.resx">
+      <DependentUpon>ПостоянныеКлиенты.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Справочники\Жанры\ДобавитьИзменитьЖанр.resx">
       <DependentUpon>ДобавитьИзменитьЖанр.cs</DependentUpon>

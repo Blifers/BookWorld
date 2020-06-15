@@ -127,6 +127,9 @@ namespace BookWorld.Продажа
             }
         }
 
-        private void
+        private void ChooseCardOfClient()
+        {
+            
+        }
     }
 }

@@ -38,6 +38,9 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.ChooseButton = new System.Windows.Forms.Button();
+            this.SeacrhTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bookWorldDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.постоянные_КлиентыBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.постоянные_КлиентыDataGridView)).BeginInit();
@@ -75,6 +78,8 @@
             // 
             // постоянные_КлиентыDataGridView
             // 
+            this.постоянные_КлиентыDataGridView.AllowUserToAddRows = false;
+            this.постоянные_КлиентыDataGridView.AllowUserToDeleteRows = false;
             this.постоянные_КлиентыDataGridView.AutoGenerateColumns = false;
             this.постоянные_КлиентыDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.постоянные_КлиентыDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -83,10 +88,12 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
             this.постоянные_КлиентыDataGridView.DataSource = this.постоянные_КлиентыBindingSource;
+            this.постоянные_КлиентыDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.постоянные_КлиентыDataGridView.Location = new System.Drawing.Point(12, 12);
             this.постоянные_КлиентыDataGridView.Name = "постоянные_КлиентыDataGridView";
             this.постоянные_КлиентыDataGridView.Size = new System.Drawing.Size(444, 220);
             this.постоянные_КлиентыDataGridView.TabIndex = 1;
+            this.постоянные_КлиентыDataGridView.TabStop = false;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -113,12 +120,42 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Телефон";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
+            // ExitButton
+            // 
+            this.ExitButton.Location = new System.Drawing.Point(529, 331);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(75, 23);
+            this.ExitButton.TabIndex = 2;
+            this.ExitButton.Text = "Закрыть";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // ChooseButton
+            // 
+            this.ChooseButton.Location = new System.Drawing.Point(462, 12);
+            this.ChooseButton.Name = "ChooseButton";
+            this.ChooseButton.Size = new System.Drawing.Size(75, 23);
+            this.ChooseButton.TabIndex = 3;
+            this.ChooseButton.Text = "Выбрать";
+            this.ChooseButton.UseVisualStyleBackColor = true;
+            this.ChooseButton.Click += new System.EventHandler(this.ChooseButton_Click);
+            // 
+            // SeacrhTextBox
+            // 
+            this.SeacrhTextBox.Location = new System.Drawing.Point(12, 248);
+            this.SeacrhTextBox.Name = "SeacrhTextBox";
+            this.SeacrhTextBox.Size = new System.Drawing.Size(100, 20);
+            this.SeacrhTextBox.TabIndex = 4;
+            // 
             // ПостоянныеКлиенты
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.SeacrhTextBox);
+            this.Controls.Add(this.ChooseButton);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.постоянные_КлиентыDataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ПостоянныеКлиенты";
@@ -129,6 +166,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.постоянные_КлиентыBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.постоянные_КлиентыDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -143,5 +181,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button ChooseButton;
+        private System.Windows.Forms.TextBox SeacrhTextBox;
     }
 }

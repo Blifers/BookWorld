@@ -34,6 +34,8 @@
             this.RemoveButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.AmountTextBox = new System.Windows.Forms.TextBox();
+            this.SearchTextBox = new System.Windows.Forms.TextBox();
+            this.ChooseCardButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.товарыdataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.чекdataGridView)).BeginInit();
             this.SuspendLayout();
@@ -99,12 +101,30 @@
             this.AmountTextBox.Size = new System.Drawing.Size(100, 20);
             this.AmountTextBox.TabIndex = 5;
             // 
+            // SearchTextBox
+            // 
+            this.SearchTextBox.Location = new System.Drawing.Point(245, 168);
+            this.SearchTextBox.Name = "SearchTextBox";
+            this.SearchTextBox.Size = new System.Drawing.Size(100, 20);
+            this.SearchTextBox.TabIndex = 6;
+            // 
+            // ChooseCardButton
+            // 
+            this.ChooseCardButton.Location = new System.Drawing.Point(514, 108);
+            this.ChooseCardButton.Name = "ChooseCardButton";
+            this.ChooseCardButton.Size = new System.Drawing.Size(102, 23);
+            this.ChooseCardButton.TabIndex = 7;
+            this.ChooseCardButton.Text = "Выбрать карту";
+            this.ChooseCardButton.UseVisualStyleBackColor = true;
+            // 
             // НоваяПродажа
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 442);
+            this.ClientSize = new System.Drawing.Size(788, 438);
             this.ControlBox = false;
+            this.Controls.Add(this.ChooseCardButton);
+            this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.AmountTextBox);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.RemoveButton);
@@ -131,5 +151,7 @@
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.TextBox AmountTextBox;
+        private System.Windows.Forms.TextBox SearchTextBox;
+        private System.Windows.Forms.Button ChooseCardButton;
     }
 }

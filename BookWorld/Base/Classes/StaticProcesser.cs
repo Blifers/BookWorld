@@ -47,6 +47,16 @@ namespace BookWorld.Base
             Command.Parameters.Add(p1);
             Connection.Open();
             SqlDataReader reader = Command.ExecuteReader();
+            Command.Parameters.Clear();
+            return reader;
+        }
+        public static SqlDataReader GetReader(string commandText)
+        {
+            SqlCommand Command = new SqlCommand();
+            Command.Connection = Connection;
+            Command.CommandText = commandText;
+            Connection.Open();
+            SqlDataReader reader = Command.ExecuteReader();
             return reader;
         }
 
@@ -69,7 +79,63 @@ namespace BookWorld.Base
             Connection.Open();
             int amount = Command.ExecuteNonQuery();
             Connection.Close();
+            Command.Parameters.Clear();
             return amount;
+        }
+
+        public static void ExecuteCommand (string commandText,SqlParameter p1, SqlParameter p2, SqlParameter p3, SqlParameter p4, SqlParameter p5)
+        {
+            SqlCommand Command = new SqlCommand();
+            Command.Connection = Connection;
+            Command.CommandText = commandText;
+            Command.Parameters.Add(p1);
+            Command.Parameters.Add(p2);
+            Command.Parameters.Add(p3);
+            Command.Parameters.Add(p4);
+            Command.Parameters.Add(p5);
+            Connection.Open();
+            Command.ExecuteNonQuery();
+            Connection.Close();
+            Command.Parameters.Clear();
+        }
+        public static void ExecuteCommand(string commandText, SqlParameter p1, SqlParameter p2)
+        {
+            SqlCommand Command = new SqlCommand();
+            Command.Connection = Connection;
+            Command.CommandText = commandText;
+            Command.Parameters.Add(p1);
+            Command.Parameters.Add(p2);
+            Connection.Open();
+            Command.ExecuteNonQuery();
+            Connection.Close();
+            Command.Parameters.Clear();
+        }
+        public static void ExecuteCommand(string commandText, SqlParameter p1, SqlParameter p2, SqlParameter p3, SqlParameter p4)
+        {
+            SqlCommand Command = new SqlCommand();
+            Command.Connection = Connection;
+            Command.CommandText = commandText;
+            Command.Parameters.Add(p1);
+            Command.Parameters.Add(p2);
+            Command.Parameters.Add(p3);
+            Command.Parameters.Add(p4);
+            Connection.Open();
+            Command.ExecuteNonQuery();
+            Connection.Close();
+            Command.Parameters.Clear();
+        }
+        public static void ExecuteCommand(string commandText, SqlParameter p1, SqlParameter p2, SqlParameter p3)
+        {
+            SqlCommand Command = new SqlCommand();
+            Command.Connection = Connection;
+            Command.CommandText = commandText;
+            Command.Parameters.Add(p1);
+            Command.Parameters.Add(p2);
+            Command.Parameters.Add(p3);
+            Connection.Open();
+            Command.ExecuteNonQuery();
+            Connection.Close();
+            Command.Parameters.Clear();
         }
 
         public static void FillDataGrid(string command,DataGridView dataGrid)
@@ -93,6 +159,7 @@ namespace BookWorld.Base
             DataTable dt = new DataTable();
             Adapter.Fill(dt);
             dataGrid.DataSource = dt;
+            Command.Parameters.Clear();
         }
 
         public static void CloseConnection()

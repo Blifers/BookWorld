@@ -1,4 +1,5 @@
 ﻿using BookWorld.Base.Classes;
+using BookWorld.BookWorldDataSetTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,14 +35,14 @@ namespace BookWorld.Справочники.ТипТовара
         private void жанрыBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
-            this.жанрыBindingSource.EndEdit();
+            this.тип_ТовараBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.bookWorldDataSet);
 
         }
 
         private void ДобавитьИзменитьТип_Load(object sender, EventArgs e)
         {
-            this.жанрыTableAdapter.Fill(this.bookWorldDataSet.Жанры);
+            this.тип_ТовараTableAdapter.Fill(this.bookWorldDataSet.Тип_Товара);
             TitleTextBox.Focus();
             if (this.Status == 1)
             {
@@ -69,6 +70,7 @@ namespace BookWorld.Справочники.ТипТовара
                 {
                     try
                     {
+                        
                         bookWorldDataSet.Tables["Тип_Товара"].Rows.Add(dr);
                         this.Validate();
                         this.tableAdapterManager.UpdateAll(this.bookWorldDataSet);
@@ -86,7 +88,7 @@ namespace BookWorld.Справочники.ТипТовара
                 {
                     try
                     {
-                        жанрыTableAdapter.Update(TitleTextBox.Text, ID, Title);
+                        тип_ТовараTableAdapter.Update(TitleTextBox.Text, ID, Title);
                         this.Validate();
                         this.tableAdapterManager.UpdateAll(bookWorldDataSet);
                         MessageBox.Show("Запись успешно изменена");
@@ -104,6 +106,14 @@ namespace BookWorld.Справочники.ТипТовара
         private void ExitButton_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void тип_ТовараBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.тип_ТовараBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.bookWorldDataSet);
+
         }
     }
 }

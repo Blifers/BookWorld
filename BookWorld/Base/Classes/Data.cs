@@ -15,14 +15,21 @@ namespace BookWorld.Base.Classes
         /// Строка подключения к базе данных.
         /// </summary>
         public static string ConnectionString = @"Data Source=III\SQLEXPRESS01;Initial Catalog=BookWorld;Integrated Security=True";
+        
+        /// <summary>
+        ///Размер наценки на поступающие товары. 
+        /// </summary>
+        public static decimal Percentage = 1.7M;
 
         /// <summary>
-        /// Скидка на данный момент 5%.
+        /// Размер скидки для постоянных покупателей.
         /// </summary>
         public static double Discount = 0.95;
         /// <summary>
         /// Для передачи номера карты клиента обратно на форму.
         /// </summary>
         public static int numberOfCard;
+
+        public static double priceOfBuy=0;
     }
 }

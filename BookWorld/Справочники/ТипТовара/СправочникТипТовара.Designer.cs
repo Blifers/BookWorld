@@ -116,6 +116,7 @@
             this.ExitButton.TabIndex = 3;
             this.ExitButton.Text = "Закрыть";
             this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // AddButton
             // 
@@ -150,7 +151,7 @@
             // СправочникТипТовара
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(523, 288);
+            this.ClientSize = new System.Drawing.Size(525, 295);
             this.ControlBox = false;
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditButton);

@@ -150,7 +150,7 @@
             // СправочникЖанры
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(525, 316);
+            this.ClientSize = new System.Drawing.Size(532, 313);
             this.ControlBox = false;
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditButton);

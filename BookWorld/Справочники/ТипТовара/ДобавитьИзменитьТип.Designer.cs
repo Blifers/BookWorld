@@ -34,11 +34,11 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.bookWorldDataSet = new BookWorld.BookWorldDataSet();
-            this.жанрыBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.жанрыTableAdapter = new BookWorld.BookWorldDataSetTableAdapters.ЖанрыTableAdapter();
+            this.тип_ТовараBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.тип_ТовараTableAdapter = new BookWorld.BookWorldDataSetTableAdapters.Тип_ТовараTableAdapter();
             this.tableAdapterManager = new BookWorld.BookWorldDataSetTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.bookWorldDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.жанрыBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_ТовараBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -82,21 +82,21 @@
             this.bookWorldDataSet.DataSetName = "BookWorldDataSet";
             this.bookWorldDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // жанрыBindingSource
+            // тип_ТовараBindingSource
             // 
-            this.жанрыBindingSource.DataMember = "Жанры";
-            this.жанрыBindingSource.DataSource = this.bookWorldDataSet;
+            this.тип_ТовараBindingSource.DataMember = "Тип_Товара";
+            this.тип_ТовараBindingSource.DataSource = this.bookWorldDataSet;
             // 
-            // жанрыTableAdapter
+            // тип_ТовараTableAdapter
             // 
-            this.жанрыTableAdapter.ClearBeforeFill = true;
+            this.тип_ТовараTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.UpdateOrder = BookWorld.BookWorldDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.Движение_ТоваровTableAdapter = null;
-            this.tableAdapterManager.ЖанрыTableAdapter = this.жанрыTableAdapter;
+            this.tableAdapterManager.ЖанрыTableAdapter = null;
             this.tableAdapterManager.ПользователиTableAdapter = null;
             this.tableAdapterManager.Постоянные_КлиентыTableAdapter = null;
             this.tableAdapterManager.ПриходTableAdapter = null;
@@ -104,23 +104,26 @@
             this.tableAdapterManager.Состав_ПриходаTableAdapter = null;
             this.tableAdapterManager.Состав_ПродажиTableAdapter = null;
             this.tableAdapterManager.СотрудникиTableAdapter = null;
-            this.tableAdapterManager.Тип_ТовараTableAdapter = null;
+            this.tableAdapterManager.Тип_ТовараTableAdapter = this.тип_ТовараTableAdapter;
             this.tableAdapterManager.ТоварыTableAdapter = null;
             // 
             // ДобавитьИзменитьТип
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(309, 142);
+            this.ControlBox = false;
             this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.TitleTextBox);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.ExitButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ДобавитьИзменитьТип";
+            this.ShowIcon = false;
             this.Text = "ДобавитьИзменитьТип";
             this.Load += new System.EventHandler(this.ДобавитьИзменитьТип_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bookWorldDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.жанрыBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.тип_ТовараBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,8 +136,8 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button ExitButton;
         private BookWorldDataSet bookWorldDataSet;
-        private System.Windows.Forms.BindingSource жанрыBindingSource;
-        private BookWorldDataSetTableAdapters.ЖанрыTableAdapter жанрыTableAdapter;
+        private System.Windows.Forms.BindingSource тип_ТовараBindingSource;
+        private BookWorldDataSetTableAdapters.Тип_ТовараTableAdapter тип_ТовараTableAdapter;
         private BookWorldDataSetTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }

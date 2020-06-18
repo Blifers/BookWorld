@@ -57,6 +57,8 @@ namespace BookWorld
                 LoginTextBox.Clear();
                 LoginTextBox.Focus();
                 PasswordTextBox.Clear();
+                reader.Close();
+                StaticProcesser.CloseConnection();
             }
             else if (count == 1)
             {

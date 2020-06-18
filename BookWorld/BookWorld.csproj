@@ -69,6 +69,12 @@
       <DependentUpon>BookWorldDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Приход\Приход.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Приход\Приход.Designer.cs">
+      <DependentUpon>Приход.cs</DependentUpon>
+    </Compile>
     <Compile Include="Продажа\НоваяПродажа.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,18 @@
     <Compile Include="Справочники\ТипТовара\СправочникТипТовара.Designer.cs">
       <DependentUpon>СправочникТипТовара.cs</DependentUpon>
     </Compile>
+    <Compile Include="Справочники\Товары\ДобавитьТовар.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Справочники\Товары\ДобавитьТовар.Designer.cs">
+      <DependentUpon>ДобавитьТовар.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Справочники\Товары\ИзменитьЦенуНазваниеТовара.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Справочники\Товары\ИзменитьЦенуНазваниеТовара.Designer.cs">
+      <DependentUpon>ИзменитьЦенуНазваниеТовара.cs</DependentUpon>
+    </Compile>
     <Compile Include="Справочники\Товары\СправочникТовары.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,12 +137,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Base\Авторизация.resx">
       <DependentUpon>Авторизация.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Base\ОсновноеМеню.resx">
       <DependentUpon>ОсновноеМеню.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Приход\Приход.resx">
+      <DependentUpon>Приход.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Продажа\НоваяПродажа.resx">
       <DependentUpon>НоваяПродажа.cs</DependentUpon>
@@ -143,6 +165,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Справочники\ТипТовара\СправочникТипТовара.resx">
       <DependentUpon>СправочникТипТовара.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Справочники\Товары\ДобавитьТовар.resx">
+      <DependentUpon>ДобавитьТовар.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Справочники\Товары\ИзменитьЦенуНазваниеТовара.resx">
+      <DependentUpon>ИзменитьЦенуНазваниеТовара.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Справочники\Товары\СправочникТовары.resx">
       <DependentUpon>СправочникТовары.cs</DependentUpon>
@@ -170,6 +198,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Base\App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotpng.com.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

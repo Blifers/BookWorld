@@ -1,4 +1,5 @@
 ﻿using BookWorld.Base.Classes;
+using BookWorld.Приход;
 using BookWorld.Справочники;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace BookWorld
         СправочникЖанры СправочникЖанры;
         СправочникТипТовара СправочникТипТовара;
         СправочникТовары СправочникТовары;
+        Приход.Приход Приход;
 
         public ОсновноеМеню()
         {
@@ -26,32 +28,33 @@ namespace BookWorld
 
         private void ОсновноеМеню_Load(object sender, EventArgs e)
         {
-            //реализовать часы в интерфейсе
             timer1.Interval = 10;
             timer1.Enabled = true;
-            
+            label1.Text = "Сегодня " + DateTime.Now.ToLongDateString();
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.WindowState = FormWindowState.Maximized;
-            //Убираем авторизацию пока не нужна
-            this.Enabled = false;
 
-            Авторизация f = new Авторизация();
-            f.ShowDialog();
-            if (User.Access == 0)
-            {
-                try
-                {
-                    this.Dispose();
-                }
-                catch (Exception ex)
-                {
-                    StaticHelper.ErrorNotifier(ex);
-                }
-            }
-            else if (User.Access == 1 || User.Access == 2)
-            {
-                this.Enabled = true;
-            }
+
+            //Убираем авторизацию пока не нужна
+            //this.Enabled = false;
+
+            //Авторизация f = new Авторизация();
+            //f.ShowDialog();
+            //if (User.Access == 0)
+            //{
+            //    try
+            //    {
+            //        this.Dispose();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        StaticHelper.ErrorNotifier(ex);
+            //    }
+            //}
+            //else if (User.Access == 1 || User.Access == 2)
+            //{
+            //    this.Enabled = true;
+            //}
         }
 
         private void жанрыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -88,6 +91,23 @@ namespace BookWorld
                 };
                 СправочникТовары.Show();
             }
+        }
+
+        private void приходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Приход == null || Приход.IsDisposed)
+            {
+                Приход = new Приход.Приход()
+                {
+                    MdiParent = this
+                };
+                Приход.Show();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label2.Text = "Время: " + DateTime.Now.ToLongTimeString();
         }
     }
 }

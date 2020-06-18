@@ -48,19 +48,19 @@ namespace BookWorld {
         
         private global::System.Data.DataRelation relationFK_Движение_Товаров_Товары;
         
-        private global::System.Data.DataRelation relationFK_Продажа_Постоянные_Клиенты;
-        
         private global::System.Data.DataRelation relationFK_Состав_Прихода_Приход;
         
         private global::System.Data.DataRelation relationFK_Состав_Прихода_Товары;
-        
-        private global::System.Data.DataRelation relationFK_Состав_Продажи_Продажа;
         
         private global::System.Data.DataRelation relationFK_Состав_Продажи_Товары;
         
         private global::System.Data.DataRelation relationFK_Товары_Жанры;
         
         private global::System.Data.DataRelation relationFK_Товары_Тип_Товара;
+        
+        private global::System.Data.DataRelation relationFK_Продажа_Постоянные_Клиенты;
+        
+        private global::System.Data.DataRelation relationFK_Состав_Продажи_Продажа;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -451,13 +451,13 @@ namespace BookWorld {
                 }
             }
             this.relationFK_Движение_Товаров_Товары = this.Relations["FK_Движение_Товаров_Товары"];
-            this.relationFK_Продажа_Постоянные_Клиенты = this.Relations["FK_Продажа_Постоянные_Клиенты"];
             this.relationFK_Состав_Прихода_Приход = this.Relations["FK_Состав_Прихода_Приход"];
             this.relationFK_Состав_Прихода_Товары = this.Relations["FK_Состав_Прихода_Товары"];
-            this.relationFK_Состав_Продажи_Продажа = this.Relations["FK_Состав_Продажи_Продажа"];
             this.relationFK_Состав_Продажи_Товары = this.Relations["FK_Состав_Продажи_Товары"];
             this.relationFK_Товары_Жанры = this.Relations["FK_Товары_Жанры"];
             this.relationFK_Товары_Тип_Товара = this.Relations["FK_Товары_Тип_Товара"];
+            this.relationFK_Продажа_Постоянные_Клиенты = this.Relations["FK_Продажа_Постоянные_Клиенты"];
+            this.relationFK_Состав_Продажи_Продажа = this.Relations["FK_Состав_Продажи_Продажа"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -494,10 +494,6 @@ namespace BookWorld {
                         this.tableТовары.Код_ТовараColumn}, new global::System.Data.DataColumn[] {
                         this.tableДвижение_Товаров.Код_ТовараColumn}, false);
             this.Relations.Add(this.relationFK_Движение_Товаров_Товары);
-            this.relationFK_Продажа_Постоянные_Клиенты = new global::System.Data.DataRelation("FK_Продажа_Постоянные_Клиенты", new global::System.Data.DataColumn[] {
-                        this.tableПостоянные_Клиенты.Номер_КартаColumn}, new global::System.Data.DataColumn[] {
-                        this.tableПродажа.Номер_КартыColumn}, false);
-            this.Relations.Add(this.relationFK_Продажа_Постоянные_Клиенты);
             this.relationFK_Состав_Прихода_Приход = new global::System.Data.DataRelation("FK_Состав_Прихода_Приход", new global::System.Data.DataColumn[] {
                         this.tableПриход.Номер_ПриходаColumn}, new global::System.Data.DataColumn[] {
                         this.tableСостав_Прихода.Номер_ПриходаColumn}, false);
@@ -506,10 +502,6 @@ namespace BookWorld {
                         this.tableТовары.Код_ТовараColumn}, new global::System.Data.DataColumn[] {
                         this.tableСостав_Прихода.Код_ТовараColumn}, false);
             this.Relations.Add(this.relationFK_Состав_Прихода_Товары);
-            this.relationFK_Состав_Продажи_Продажа = new global::System.Data.DataRelation("FK_Состав_Продажи_Продажа", new global::System.Data.DataColumn[] {
-                        this.tableПродажа.Номер_ПродажиColumn}, new global::System.Data.DataColumn[] {
-                        this.tableСостав_Продажи.Номер_ПродажиColumn}, false);
-            this.Relations.Add(this.relationFK_Состав_Продажи_Продажа);
             this.relationFK_Состав_Продажи_Товары = new global::System.Data.DataRelation("FK_Состав_Продажи_Товары", new global::System.Data.DataColumn[] {
                         this.tableТовары.Код_ТовараColumn}, new global::System.Data.DataColumn[] {
                         this.tableСостав_Продажи.Код_ТовараColumn}, false);
@@ -522,6 +514,14 @@ namespace BookWorld {
                         this.tableТип_Товара.Код_ТипаColumn}, new global::System.Data.DataColumn[] {
                         this.tableТовары.Тип_ТовараColumn}, false);
             this.Relations.Add(this.relationFK_Товары_Тип_Товара);
+            this.relationFK_Продажа_Постоянные_Клиенты = new global::System.Data.DataRelation("FK_Продажа_Постоянные_Клиенты", new global::System.Data.DataColumn[] {
+                        this.tableПостоянные_Клиенты.Номер_КартыColumn}, new global::System.Data.DataColumn[] {
+                        this.tableПродажа.Номер_КартыColumn}, false);
+            this.Relations.Add(this.relationFK_Продажа_Постоянные_Клиенты);
+            this.relationFK_Состав_Продажи_Продажа = new global::System.Data.DataRelation("FK_Состав_Продажи_Продажа", new global::System.Data.DataColumn[] {
+                        this.tableПродажа.ЧекColumn}, new global::System.Data.DataColumn[] {
+                        this.tableСостав_Продажи.ЧекColumn}, false);
+            this.Relations.Add(this.relationFK_Состав_Продажи_Продажа);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1564,13 +1564,13 @@ namespace BookWorld {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class Постоянные_КлиентыDataTable : global::System.Data.TypedTableBase<Постоянные_КлиентыRow> {
             
-            private global::System.Data.DataColumn columnНомер_Карта;
-            
             private global::System.Data.DataColumn columnФИО;
             
             private global::System.Data.DataColumn columnДата_Вручения;
             
             private global::System.Data.DataColumn columnТелефон;
+            
+            private global::System.Data.DataColumn columnНомер_Карты;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1607,14 +1607,6 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Номер_КартаColumn {
-                get {
-                    return this.columnНомер_Карта;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ФИОColumn {
                 get {
                     return this.columnФИО;
@@ -1634,6 +1626,14 @@ namespace BookWorld {
             public global::System.Data.DataColumn ТелефонColumn {
                 get {
                     return this.columnТелефон;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Номер_КартыColumn {
+                get {
+                    return this.columnНомер_Карты;
                 }
             }
             
@@ -1677,10 +1677,10 @@ namespace BookWorld {
             public Постоянные_КлиентыRow AddПостоянные_КлиентыRow(string ФИО, System.DateTime Дата_Вручения, string Телефон) {
                 Постоянные_КлиентыRow rowПостоянные_КлиентыRow = ((Постоянные_КлиентыRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         ФИО,
                         Дата_Вручения,
-                        Телефон};
+                        Телефон,
+                        null};
                 rowПостоянные_КлиентыRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowПостоянные_КлиентыRow);
                 return rowПостоянные_КлиентыRow;
@@ -1688,9 +1688,9 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Постоянные_КлиентыRow FindByНомер_Карта(int Номер_Карта) {
+            public Постоянные_КлиентыRow FindByНомер_Карты(int Номер_Карты) {
                 return ((Постоянные_КлиентыRow)(this.Rows.Find(new object[] {
-                            Номер_Карта})));
+                            Номер_Карты})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1710,35 +1710,35 @@ namespace BookWorld {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnНомер_Карта = base.Columns["Номер_Карта"];
                 this.columnФИО = base.Columns["ФИО"];
                 this.columnДата_Вручения = base.Columns["Дата_Вручения"];
                 this.columnТелефон = base.Columns["Телефон"];
+                this.columnНомер_Карты = base.Columns["Номер_Карты"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnНомер_Карта = new global::System.Data.DataColumn("Номер_Карта", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnНомер_Карта);
                 this.columnФИО = new global::System.Data.DataColumn("ФИО", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnФИО);
                 this.columnДата_Вручения = new global::System.Data.DataColumn("Дата_Вручения", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnДата_Вручения);
                 this.columnТелефон = new global::System.Data.DataColumn("Телефон", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnТелефон);
+                this.columnНомер_Карты = new global::System.Data.DataColumn("Номер_Карты", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnНомер_Карты);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnНомер_Карта}, true));
-                this.columnНомер_Карта.AutoIncrement = true;
-                this.columnНомер_Карта.AutoIncrementSeed = -1;
-                this.columnНомер_Карта.AutoIncrementStep = -1;
-                this.columnНомер_Карта.AllowDBNull = false;
-                this.columnНомер_Карта.ReadOnly = true;
-                this.columnНомер_Карта.Unique = true;
+                                this.columnНомер_Карты}, true));
                 this.columnФИО.AllowDBNull = false;
                 this.columnФИО.MaxLength = 120;
                 this.columnДата_Вручения.AllowDBNull = false;
                 this.columnТелефон.MaxLength = 12;
+                this.columnНомер_Карты.AutoIncrement = true;
+                this.columnНомер_Карты.AutoIncrementSeed = -1;
+                this.columnНомер_Карты.AutoIncrementStep = -1;
+                this.columnНомер_Карты.AllowDBNull = false;
+                this.columnНомер_Карты.ReadOnly = true;
+                this.columnНомер_Карты.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2164,13 +2164,13 @@ namespace BookWorld {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ПродажаDataTable : global::System.Data.TypedTableBase<ПродажаRow> {
             
-            private global::System.Data.DataColumn columnНомер_Продажи;
-            
             private global::System.Data.DataColumn columnДата;
             
             private global::System.Data.DataColumn columnНомер_Карты;
             
-            private global::System.Data.DataColumn columnСумма_Продажи;
+            private global::System.Data.DataColumn columnЧек;
+            
+            private global::System.Data.DataColumn columnСумма_Чека;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -2207,14 +2207,6 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Номер_ПродажиColumn {
-                get {
-                    return this.columnНомер_Продажи;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ДатаColumn {
                 get {
                     return this.columnДата;
@@ -2231,9 +2223,17 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Сумма_ПродажиColumn {
+            public global::System.Data.DataColumn ЧекColumn {
                 get {
-                    return this.columnСумма_Продажи;
+                    return this.columnЧек;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Сумма_ЧекаColumn {
+                get {
+                    return this.columnСумма_Чека;
                 }
             }
             
@@ -2274,15 +2274,15 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ПродажаRow AddПродажаRow(System.DateTime Дата, Постоянные_КлиентыRow parentПостоянные_КлиентыRowByFK_Продажа_Постоянные_Клиенты, decimal Сумма_Продажи) {
+            public ПродажаRow AddПродажаRow(System.DateTime Дата, Постоянные_КлиентыRow parentПостоянные_КлиентыRowByFK_Продажа_Постоянные_Клиенты, decimal Сумма_Чека) {
                 ПродажаRow rowПродажаRow = ((ПродажаRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         Дата,
                         null,
-                        Сумма_Продажи};
+                        null,
+                        Сумма_Чека};
                 if ((parentПостоянные_КлиентыRowByFK_Продажа_Постоянные_Клиенты != null)) {
-                    columnValuesArray[2] = parentПостоянные_КлиентыRowByFK_Продажа_Постоянные_Клиенты[0];
+                    columnValuesArray[1] = parentПостоянные_КлиентыRowByFK_Продажа_Постоянные_Клиенты[3];
                 }
                 rowПродажаRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowПродажаRow);
@@ -2291,9 +2291,9 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ПродажаRow FindByНомер_Продажи(int Номер_Продажи) {
+            public ПродажаRow FindByЧек(int Чек) {
                 return ((ПродажаRow)(this.Rows.Find(new object[] {
-                            Номер_Продажи})));
+                            Чек})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2313,32 +2313,32 @@ namespace BookWorld {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnНомер_Продажи = base.Columns["Номер_Продажи"];
                 this.columnДата = base.Columns["Дата"];
                 this.columnНомер_Карты = base.Columns["Номер_Карты"];
-                this.columnСумма_Продажи = base.Columns["Сумма_Продажи"];
+                this.columnЧек = base.Columns["Чек"];
+                this.columnСумма_Чека = base.Columns["Сумма_Чека"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnНомер_Продажи = new global::System.Data.DataColumn("Номер_Продажи", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnНомер_Продажи);
                 this.columnДата = new global::System.Data.DataColumn("Дата", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnДата);
                 this.columnНомер_Карты = new global::System.Data.DataColumn("Номер_Карты", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnНомер_Карты);
-                this.columnСумма_Продажи = new global::System.Data.DataColumn("Сумма_Продажи", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnСумма_Продажи);
+                this.columnЧек = new global::System.Data.DataColumn("Чек", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnЧек);
+                this.columnСумма_Чека = new global::System.Data.DataColumn("Сумма_Чека", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnСумма_Чека);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnНомер_Продажи}, true));
-                this.columnНомер_Продажи.AutoIncrement = true;
-                this.columnНомер_Продажи.AutoIncrementSeed = -1;
-                this.columnНомер_Продажи.AutoIncrementStep = -1;
-                this.columnНомер_Продажи.AllowDBNull = false;
-                this.columnНомер_Продажи.ReadOnly = true;
-                this.columnНомер_Продажи.Unique = true;
+                                this.columnЧек}, true));
                 this.columnДата.AllowDBNull = false;
+                this.columnЧек.AutoIncrement = true;
+                this.columnЧек.AutoIncrementSeed = -1;
+                this.columnЧек.AutoIncrementStep = -1;
+                this.columnЧек.AllowDBNull = false;
+                this.columnЧек.ReadOnly = true;
+                this.columnЧек.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2478,6 +2478,10 @@ namespace BookWorld {
             
             private global::System.Data.DataColumn columnКоличество;
             
+            private global::System.Data.DataColumn columnЦена_Закупки;
+            
+            private global::System.Data.DataColumn columnЦена_Продажи;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public Состав_ПриходаDataTable() {
@@ -2537,6 +2541,22 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Цена_ЗакупкиColumn {
+                get {
+                    return this.columnЦена_Закупки;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Цена_ПродажиColumn {
+                get {
+                    return this.columnЦена_Продажи;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2572,12 +2592,14 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Состав_ПриходаRow AddСостав_ПриходаRow(ПриходRow parentПриходRowByFK_Состав_Прихода_Приход, ТоварыRow parentТоварыRowByFK_Состав_Прихода_Товары, int Количество) {
+            public Состав_ПриходаRow AddСостав_ПриходаRow(ПриходRow parentПриходRowByFK_Состав_Прихода_Приход, ТоварыRow parentТоварыRowByFK_Состав_Прихода_Товары, int Количество, decimal Цена_Закупки, decimal Цена_Продажи) {
                 Состав_ПриходаRow rowСостав_ПриходаRow = ((Состав_ПриходаRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
-                        Количество};
+                        Количество,
+                        Цена_Закупки,
+                        Цена_Продажи};
                 if ((parentПриходRowByFK_Состав_Прихода_Приход != null)) {
                     columnValuesArray[0] = parentПриходRowByFK_Состав_Прихода_Приход[0];
                 }
@@ -2617,6 +2639,8 @@ namespace BookWorld {
                 this.columnНомер_Прихода = base.Columns["Номер_Прихода"];
                 this.columnКод_Товара = base.Columns["Код_Товара"];
                 this.columnКоличество = base.Columns["Количество"];
+                this.columnЦена_Закупки = base.Columns["Цена_Закупки"];
+                this.columnЦена_Продажи = base.Columns["Цена_Продажи"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2628,12 +2652,18 @@ namespace BookWorld {
                 base.Columns.Add(this.columnКод_Товара);
                 this.columnКоличество = new global::System.Data.DataColumn("Количество", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnКоличество);
+                this.columnЦена_Закупки = new global::System.Data.DataColumn("Цена_Закупки", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnЦена_Закупки);
+                this.columnЦена_Продажи = new global::System.Data.DataColumn("Цена_Продажи", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnЦена_Продажи);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnНомер_Прихода,
                                 this.columnКод_Товара}, true));
                 this.columnНомер_Прихода.AllowDBNull = false;
                 this.columnКод_Товара.AllowDBNull = false;
                 this.columnКоличество.AllowDBNull = false;
+                this.columnЦена_Закупки.AllowDBNull = false;
+                this.columnЦена_Продажи.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2767,11 +2797,13 @@ namespace BookWorld {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class Состав_ПродажиDataTable : global::System.Data.TypedTableBase<Состав_ПродажиRow> {
             
-            private global::System.Data.DataColumn columnНомер_Продажи;
-            
             private global::System.Data.DataColumn columnКод_Товара;
             
             private global::System.Data.DataColumn columnКоличество;
+            
+            private global::System.Data.DataColumn columnЧек;
+            
+            private global::System.Data.DataColumn columnЦена;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -2808,14 +2840,6 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Номер_ПродажиColumn {
-                get {
-                    return this.columnНомер_Продажи;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn Код_ТовараColumn {
                 get {
                     return this.columnКод_Товара;
@@ -2827,6 +2851,22 @@ namespace BookWorld {
             public global::System.Data.DataColumn КоличествоColumn {
                 get {
                     return this.columnКоличество;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ЧекColumn {
+                get {
+                    return this.columnЧек;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ЦенаColumn {
+                get {
+                    return this.columnЦена;
                 }
             }
             
@@ -2867,17 +2907,18 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Состав_ПродажиRow AddСостав_ПродажиRow(ПродажаRow parentПродажаRowByFK_Состав_Продажи_Продажа, ТоварыRow parentТоварыRowByFK_Состав_Продажи_Товары, int Количество) {
+            public Состав_ПродажиRow AddСостав_ПродажиRow(ТоварыRow parentТоварыRowByFK_Состав_Продажи_Товары, int Количество, ПродажаRow parentПродажаRowByFK_Состав_Продажи_Продажа, decimal Цена) {
                 Состав_ПродажиRow rowСостав_ПродажиRow = ((Состав_ПродажиRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
+                        Количество,
                         null,
-                        Количество};
-                if ((parentПродажаRowByFK_Состав_Продажи_Продажа != null)) {
-                    columnValuesArray[0] = parentПродажаRowByFK_Состав_Продажи_Продажа[0];
-                }
+                        Цена};
                 if ((parentТоварыRowByFK_Состав_Продажи_Товары != null)) {
-                    columnValuesArray[1] = parentТоварыRowByFK_Состав_Продажи_Товары[0];
+                    columnValuesArray[0] = parentТоварыRowByFK_Состав_Продажи_Товары[0];
+                }
+                if ((parentПродажаRowByFK_Состав_Продажи_Продажа != null)) {
+                    columnValuesArray[2] = parentПродажаRowByFK_Состав_Продажи_Продажа[2];
                 }
                 rowСостав_ПродажиRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowСостав_ПродажиRow);
@@ -2886,10 +2927,10 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Состав_ПродажиRow FindByНомер_ПродажиКод_Товара(int Номер_Продажи, int Код_Товара) {
+            public Состав_ПродажиRow FindByКод_ТовараЧек(int Код_Товара, int Чек) {
                 return ((Состав_ПродажиRow)(this.Rows.Find(new object[] {
-                            Номер_Продажи,
-                            Код_Товара})));
+                            Код_Товара,
+                            Чек})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2909,26 +2950,30 @@ namespace BookWorld {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnНомер_Продажи = base.Columns["Номер_Продажи"];
                 this.columnКод_Товара = base.Columns["Код_Товара"];
                 this.columnКоличество = base.Columns["Количество"];
+                this.columnЧек = base.Columns["Чек"];
+                this.columnЦена = base.Columns["Цена"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnНомер_Продажи = new global::System.Data.DataColumn("Номер_Продажи", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnНомер_Продажи);
                 this.columnКод_Товара = new global::System.Data.DataColumn("Код_Товара", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnКод_Товара);
                 this.columnКоличество = new global::System.Data.DataColumn("Количество", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnКоличество);
+                this.columnЧек = new global::System.Data.DataColumn("Чек", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnЧек);
+                this.columnЦена = new global::System.Data.DataColumn("Цена", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnЦена);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnНомер_Продажи,
-                                this.columnКод_Товара}, true));
-                this.columnНомер_Продажи.AllowDBNull = false;
+                                this.columnКод_Товара,
+                                this.columnЧек}, true));
                 this.columnКод_Товара.AllowDBNull = false;
                 this.columnКоличество.AllowDBNull = false;
+                this.columnЧек.AllowDBNull = false;
+                this.columnЦена.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4193,17 +4238,6 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Номер_Карта {
-                get {
-                    return ((int)(this[this.tableПостоянные_Клиенты.Номер_КартаColumn]));
-                }
-                set {
-                    this[this.tableПостоянные_Клиенты.Номер_КартаColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string ФИО {
                 get {
                     return ((string)(this[this.tableПостоянные_Клиенты.ФИОColumn]));
@@ -4237,6 +4271,17 @@ namespace BookWorld {
                 }
                 set {
                     this[this.tableПостоянные_Клиенты.ТелефонColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Номер_Карты {
+                get {
+                    return ((int)(this[this.tableПостоянные_Клиенты.Номер_КартыColumn]));
+                }
+                set {
+                    this[this.tableПостоянные_Клиенты.Номер_КартыColumn] = value;
                 }
             }
             
@@ -4356,17 +4401,6 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Номер_Продажи {
-                get {
-                    return ((int)(this[this.tableПродажа.Номер_ПродажиColumn]));
-                }
-                set {
-                    this[this.tableПродажа.Номер_ПродажиColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public System.DateTime Дата {
                 get {
                     return ((global::System.DateTime)(this[this.tableПродажа.ДатаColumn]));
@@ -4394,17 +4428,28 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public decimal Сумма_Продажи {
+            public int Чек {
+                get {
+                    return ((int)(this[this.tableПродажа.ЧекColumn]));
+                }
+                set {
+                    this[this.tableПродажа.ЧекColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Сумма_Чека {
                 get {
                     try {
-                        return ((decimal)(this[this.tableПродажа.Сумма_ПродажиColumn]));
+                        return ((decimal)(this[this.tableПродажа.Сумма_ЧекаColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Сумма_Продажи\' в таблице \'Продажа\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Сумма_Чека\' в таблице \'Продажа\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableПродажа.Сумма_ПродажиColumn] = value;
+                    this[this.tableПродажа.Сумма_ЧекаColumn] = value;
                 }
             }
             
@@ -4433,14 +4478,14 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsСумма_ПродажиNull() {
-                return this.IsNull(this.tableПродажа.Сумма_ПродажиColumn);
+            public bool IsСумма_ЧекаNull() {
+                return this.IsNull(this.tableПродажа.Сумма_ЧекаColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetСумма_ПродажиNull() {
-                this[this.tableПродажа.Сумма_ПродажиColumn] = global::System.Convert.DBNull;
+            public void SetСумма_ЧекаNull() {
+                this[this.tableПродажа.Сумма_ЧекаColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4504,6 +4549,28 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Цена_Закупки {
+                get {
+                    return ((decimal)(this[this.tableСостав_Прихода.Цена_ЗакупкиColumn]));
+                }
+                set {
+                    this[this.tableСостав_Прихода.Цена_ЗакупкиColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Цена_Продажи {
+                get {
+                    return ((decimal)(this[this.tableСостав_Прихода.Цена_ПродажиColumn]));
+                }
+                set {
+                    this[this.tableСостав_Прихода.Цена_ПродажиColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ПриходRow ПриходRow {
                 get {
                     return ((ПриходRow)(this.GetParentRow(this.Table.ParentRelations["FK_Состав_Прихода_Приход"])));
@@ -4541,17 +4608,6 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Номер_Продажи {
-                get {
-                    return ((int)(this[this.tableСостав_Продажи.Номер_ПродажиColumn]));
-                }
-                set {
-                    this[this.tableСостав_Продажи.Номер_ПродажиColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Код_Товара {
                 get {
                     return ((int)(this[this.tableСостав_Продажи.Код_ТовараColumn]));
@@ -4574,12 +4630,23 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ПродажаRow ПродажаRow {
+            public int Чек {
                 get {
-                    return ((ПродажаRow)(this.GetParentRow(this.Table.ParentRelations["FK_Состав_Продажи_Продажа"])));
+                    return ((int)(this[this.tableСостав_Продажи.ЧекColumn]));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Состав_Продажи_Продажа"]);
+                    this[this.tableСостав_Продажи.ЧекColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Цена {
+                get {
+                    return ((decimal)(this[this.tableСостав_Продажи.ЦенаColumn]));
+                }
+                set {
+                    this[this.tableСостав_Продажи.ЦенаColumn] = value;
                 }
             }
             
@@ -4591,6 +4658,17 @@ namespace BookWorld {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Состав_Продажи_Товары"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ПродажаRow ПродажаRow {
+                get {
+                    return ((ПродажаRow)(this.GetParentRow(this.Table.ParentRelations["FK_Состав_Продажи_Продажа"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Состав_Продажи_Продажа"]);
                 }
             }
         }
@@ -6449,46 +6527,46 @@ SELECT Имя_Пользователя, Пароль FROM Пользовател
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Постоянные_Клиенты";
-            tableMapping.ColumnMappings.Add("Номер_Карта", "Номер_Карта");
             tableMapping.ColumnMappings.Add("ФИО", "ФИО");
             tableMapping.ColumnMappings.Add("Дата_Вручения", "Дата_Вручения");
             tableMapping.ColumnMappings.Add("Телефон", "Телефон");
+            tableMapping.ColumnMappings.Add("Номер_Карты", "Номер_Карты");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Постоянные_Клиенты] WHERE (([Номер_Карта] = @Original_Номер_Ка" +
-                "рта) AND ([ФИО] = @Original_ФИО) AND ([Дата_Вручения] = @Original_Дата_Вручения)" +
-                " AND ((@IsNull_Телефон = 1 AND [Телефон] IS NULL) OR ([Телефон] = @Original_Теле" +
-                "фон)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [Постоянные_Клиенты] WHERE (([ФИО] = @Original_ФИО) AND ([Дата_Вручен" +
+                "ия] = @Original_Дата_Вручения) AND ((@IsNull_Телефон = 1 AND [Телефон] IS NULL) " +
+                "OR ([Телефон] = @Original_Телефон)) AND ([Номер_Карты] = @Original_Номер_Карты))" +
+                "";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Карта", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карта", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Дата_Вручения", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата_Вручения", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Телефон", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Телефон", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Карты", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карты", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Постоянные_Клиенты] ([ФИО], [Дата_Вручения], [Телефон]) VALUES" +
-                " (@ФИО, @Дата_Вручения, @Телефон);\r\nSELECT Номер_Карта, ФИО, Дата_Вручения, Теле" +
-                "фон FROM Постоянные_Клиенты WHERE (Номер_Карта = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Постоянные_Клиенты] ([ФИО], [Дата_Вручения], [Телефон]) VALUES (@ФИО" +
+                ", @Дата_Вручения, @Телефон);\r\nSELECT ФИО, Дата_Вручения, Телефон, Номер_Карты FR" +
+                "OM Постоянные_Клиенты WHERE (Номер_Карты = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Дата_Вручения", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата_Вручения", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Телефон", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Постоянные_Клиенты] SET [ФИО] = @ФИО, [Дата_Вручения] = @Дата_Вручения, [Телефон] = @Телефон WHERE (([Номер_Карта] = @Original_Номер_Карта) AND ([ФИО] = @Original_ФИО) AND ([Дата_Вручения] = @Original_Дата_Вручения) AND ((@IsNull_Телефон = 1 AND [Телефон] IS NULL) OR ([Телефон] = @Original_Телефон)));
-SELECT Номер_Карта, ФИО, Дата_Вручения, Телефон FROM Постоянные_Клиенты WHERE (Номер_Карта = @Номер_Карта)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Постоянные_Клиенты] SET [ФИО] = @ФИО, [Дата_Вручения] = @Дата_Вручения, [Телефон] = @Телефон WHERE (([ФИО] = @Original_ФИО) AND ([Дата_Вручения] = @Original_Дата_Вручения) AND ((@IsNull_Телефон = 1 AND [Телефон] IS NULL) OR ([Телефон] = @Original_Телефон)) AND ([Номер_Карты] = @Original_Номер_Карты));
+SELECT ФИО, Дата_Вручения, Телефон, Номер_Карты FROM Постоянные_Клиенты WHERE (Номер_Карты = @Номер_Карты)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Дата_Вручения", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата_Вручения", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Телефон", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Карта", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карта", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Дата_Вручения", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата_Вручения", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Телефон", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Телефон", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Номер_Карта", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карта", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Карты", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карты", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Номер_Карты", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карты", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6504,7 +6582,7 @@ SELECT Номер_Карта, ФИО, Дата_Вручения, Телефон 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Номер_Карта, ФИО, Дата_Вручения, Телефон FROM dbo.Постоянные_Клиенты";
+            this._commandCollection[0].CommandText = "SELECT ФИО, Дата_Вручения, Телефон, Номер_Карты FROM Постоянные_Клиенты";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6565,23 +6643,23 @@ SELECT Номер_Карта, ФИО, Дата_Вручения, Телефон 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Номер_Карта, string Original_ФИО, System.DateTime Original_Дата_Вручения, string Original_Телефон) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Номер_Карта));
+        public virtual int Delete(string Original_ФИО, System.DateTime Original_Дата_Вручения, string Original_Телефон, int Original_Номер_Карты) {
             if ((Original_ФИО == null)) {
                 throw new global::System.ArgumentNullException("Original_ФИО");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_ФИО));
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_ФИО));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((System.DateTime)(Original_Дата_Вручения));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_Дата_Вручения));
             if ((Original_Телефон == null)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Телефон));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Телефон));
             }
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_Номер_Карты));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6636,7 +6714,7 @@ SELECT Номер_Карта, ФИО, Дата_Вручения, Телефон 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ФИО, System.DateTime Дата_Вручения, string Телефон, int Original_Номер_Карта, string Original_ФИО, System.DateTime Original_Дата_Вручения, string Original_Телефон, int Номер_Карта) {
+        public virtual int Update(string ФИО, System.DateTime Дата_Вручения, string Телефон, string Original_ФИО, System.DateTime Original_Дата_Вручения, string Original_Телефон, int Original_Номер_Карты, int Номер_Карты) {
             if ((ФИО == null)) {
                 throw new global::System.ArgumentNullException("ФИО");
             }
@@ -6650,23 +6728,23 @@ SELECT Номер_Карта, ФИО, Дата_Вручения, Телефон 
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Телефон));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Номер_Карта));
             if ((Original_ФИО == null)) {
                 throw new global::System.ArgumentNullException("Original_ФИО");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_ФИО));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_ФИО));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Original_Дата_Вручения));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Original_Дата_Вручения));
             if ((Original_Телефон == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Телефон));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Телефон));
             }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Номер_Карта));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Номер_Карты));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Номер_Карты));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -6687,8 +6765,8 @@ SELECT Номер_Карта, ФИО, Дата_Вручения, Телефон 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ФИО, System.DateTime Дата_Вручения, string Телефон, int Original_Номер_Карта, string Original_ФИО, System.DateTime Original_Дата_Вручения, string Original_Телефон) {
-            return this.Update(ФИО, Дата_Вручения, Телефон, Original_Номер_Карта, Original_ФИО, Original_Дата_Вручения, Original_Телефон, Original_Номер_Карта);
+        public virtual int Update(string ФИО, System.DateTime Дата_Вручения, string Телефон, string Original_ФИО, System.DateTime Original_Дата_Вручения, string Original_Телефон, int Original_Номер_Карты) {
+            return this.Update(ФИО, Дата_Вручения, Телефон, Original_ФИО, Original_Дата_Вручения, Original_Телефон, Original_Номер_Карты, Original_Номер_Карты);
         }
     }
     
@@ -7147,45 +7225,45 @@ SELECT Номер_Прихода, Дата, Комментарий FROM Прих
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Продажа";
-            tableMapping.ColumnMappings.Add("Номер_Продажи", "Номер_Продажи");
             tableMapping.ColumnMappings.Add("Дата", "Дата");
             tableMapping.ColumnMappings.Add("Номер_Карты", "Номер_Карты");
-            tableMapping.ColumnMappings.Add("Сумма_Продажи", "Сумма_Продажи");
+            tableMapping.ColumnMappings.Add("Чек", "Чек");
+            tableMapping.ColumnMappings.Add("Сумма_Чека", "Сумма_Чека");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Продажа] WHERE (([Номер_Продажи] = @Original_Номер_Продажи) AND ([Дата] = @Original_Дата) AND ((@IsNull_Номер_Карты = 1 AND [Номер_Карты] IS NULL) OR ([Номер_Карты] = @Original_Номер_Карты)) AND ((@IsNull_Сумма_Продажи = 1 AND [Сумма_Продажи] IS NULL) OR ([Сумма_Продажи] = @Original_Сумма_Продажи)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Продажа] WHERE (([Дата] = @Original_Дата) AND ((@IsNull_Номер_Карты = 1 AND [Номер_Карты] IS NULL) OR ([Номер_Карты] = @Original_Номер_Карты)) AND ((@IsNull_Сумма_Чека = 1 AND [Сумма_Чека] IS NULL) OR ([Сумма_Чека] = @Original_Сумма_Чека)) AND ([Чек] = @Original_Чек))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Продажи", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Продажи", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Дата", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Номер_Карты", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карты", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Карты", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карты", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Сумма_Продажи", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Продажи", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Сумма_Продажи", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Продажи", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Сумма_Чека", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Чека", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Сумма_Чека", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Чека", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Чек", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Чек", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Продажа] ([Дата], [Номер_Карты], [Сумма_Продажи]) VALUES (@Дат" +
-                "а, @Номер_Карты, @Сумма_Продажи);\r\nSELECT Номер_Продажи, Дата, Номер_Карты, Сумм" +
-                "а_Продажи FROM Продажа WHERE (Номер_Продажи = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Продажа] ([Дата], [Номер_Карты], [Сумма_Чека]) VALUES (@Дата, @Номер" +
+                "_Карты, @Сумма_Чека);\r\nSELECT Дата, Номер_Карты, Сумма_Чека, Чек FROM Продажа WH" +
+                "ERE (Чек = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Дата", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Номер_Карты", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карты", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Сумма_Продажи", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Продажи", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Сумма_Чека", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Чека", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Продажа] SET [Дата] = @Дата, [Номер_Карты] = @Номер_Карты, [Сумма_Продажи] = @Сумма_Продажи WHERE (([Номер_Продажи] = @Original_Номер_Продажи) AND ([Дата] = @Original_Дата) AND ((@IsNull_Номер_Карты = 1 AND [Номер_Карты] IS NULL) OR ([Номер_Карты] = @Original_Номер_Карты)) AND ((@IsNull_Сумма_Продажи = 1 AND [Сумма_Продажи] IS NULL) OR ([Сумма_Продажи] = @Original_Сумма_Продажи)));
-SELECT Номер_Продажи, Дата, Номер_Карты, Сумма_Продажи FROM Продажа WHERE (Номер_Продажи = @Номер_Продажи)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Продажа] SET [Дата] = @Дата, [Номер_Карты] = @Номер_Карты, [Сумма_Чека] = @Сумма_Чека WHERE (([Дата] = @Original_Дата) AND ((@IsNull_Номер_Карты = 1 AND [Номер_Карты] IS NULL) OR ([Номер_Карты] = @Original_Номер_Карты)) AND ((@IsNull_Сумма_Чека = 1 AND [Сумма_Чека] IS NULL) OR ([Сумма_Чека] = @Original_Сумма_Чека)) AND ([Чек] = @Original_Чек));
+SELECT Дата, Номер_Карты, Сумма_Чека, Чек FROM Продажа WHERE (Чек = @Чек)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Дата", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Номер_Карты", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карты", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Сумма_Продажи", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Продажи", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Продажи", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Продажи", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Сумма_Чека", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Чека", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Дата", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Номер_Карты", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карты", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Карты", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Карты", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Сумма_Продажи", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Продажи", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Сумма_Продажи", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Продажи", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Номер_Продажи", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Продажи", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Сумма_Чека", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Чека", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Сумма_Чека", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Сумма_Чека", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Чек", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Чек", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Чек", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Чек", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7201,7 +7279,7 @@ SELECT Номер_Продажи, Дата, Номер_Карты, Сумма_П
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Номер_Продажи, Дата, Номер_Карты, Сумма_Продажи FROM dbo.Продажа";
+            this._commandCollection[0].CommandText = "SELECT Дата, Номер_Карты, Сумма_Чека, Чек FROM Продажа";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7262,25 +7340,25 @@ SELECT Номер_Продажи, Дата, Номер_Карты, Сумма_П
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Номер_Продажи, System.DateTime Original_Дата, global::System.Nullable<int> Original_Номер_Карты, global::System.Nullable<decimal> Original_Сумма_Продажи) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Номер_Продажи));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_Дата));
+        public virtual int Delete(System.DateTime Original_Дата, global::System.Nullable<int> Original_Номер_Карты, global::System.Nullable<decimal> Original_Сумма_Чека, int Original_Чек) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((System.DateTime)(Original_Дата));
             if ((Original_Номер_Карты.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_Номер_Карты.Value));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Номер_Карты.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Original_Сумма_Продажи.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((decimal)(Original_Сумма_Продажи.Value));
+            if ((Original_Сумма_Чека.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_Сумма_Чека.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_Чек));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7301,7 +7379,7 @@ SELECT Номер_Продажи, Дата, Номер_Карты, Сумма_П
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.DateTime Дата, global::System.Nullable<int> Номер_Карты, global::System.Nullable<decimal> Сумма_Продажи) {
+        public virtual int Insert(System.DateTime Дата, global::System.Nullable<int> Номер_Карты, global::System.Nullable<decimal> Сумма_Чека) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(Дата));
             if ((Номер_Карты.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Номер_Карты.Value));
@@ -7309,8 +7387,8 @@ SELECT Номер_Продажи, Дата, Номер_Карты, Сумма_П
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Сумма_Продажи.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(Сумма_Продажи.Value));
+            if ((Сумма_Чека.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(Сумма_Чека.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -7335,7 +7413,7 @@ SELECT Номер_Продажи, Дата, Номер_Карты, Сумма_П
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime Дата, global::System.Nullable<int> Номер_Карты, global::System.Nullable<decimal> Сумма_Продажи, int Original_Номер_Продажи, System.DateTime Original_Дата, global::System.Nullable<int> Original_Номер_Карты, global::System.Nullable<decimal> Original_Сумма_Продажи, int Номер_Продажи) {
+        public virtual int Update(System.DateTime Дата, global::System.Nullable<int> Номер_Карты, global::System.Nullable<decimal> Сумма_Чека, System.DateTime Original_Дата, global::System.Nullable<int> Original_Номер_Карты, global::System.Nullable<decimal> Original_Сумма_Чека, int Original_Чек, int Чек) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(Дата));
             if ((Номер_Карты.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Номер_Карты.Value));
@@ -7343,31 +7421,31 @@ SELECT Номер_Продажи, Дата, Номер_Карты, Сумма_П
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Сумма_Продажи.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(Сумма_Продажи.Value));
+            if ((Сумма_Чека.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(Сумма_Чека.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Номер_Продажи));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(Original_Дата));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(Original_Дата));
             if ((Original_Номер_Карты.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Номер_Карты.Value));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Номер_Карты.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Original_Сумма_Продажи.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Original_Сумма_Продажи.Value));
+            if ((Original_Сумма_Чека.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((decimal)(Original_Сумма_Чека.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Номер_Продажи));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Чек));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Чек));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7388,8 +7466,8 @@ SELECT Номер_Продажи, Дата, Номер_Карты, Сумма_П
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime Дата, global::System.Nullable<int> Номер_Карты, global::System.Nullable<decimal> Сумма_Продажи, int Original_Номер_Продажи, System.DateTime Original_Дата, global::System.Nullable<int> Original_Номер_Карты, global::System.Nullable<decimal> Original_Сумма_Продажи) {
-            return this.Update(Дата, Номер_Карты, Сумма_Продажи, Original_Номер_Продажи, Original_Дата, Original_Номер_Карты, Original_Сумма_Продажи, Original_Номер_Продажи);
+        public virtual int Update(System.DateTime Дата, global::System.Nullable<int> Номер_Карты, global::System.Nullable<decimal> Сумма_Чека, System.DateTime Original_Дата, global::System.Nullable<int> Original_Номер_Карты, global::System.Nullable<decimal> Original_Сумма_Чека, int Original_Чек) {
+            return this.Update(Дата, Номер_Карты, Сумма_Чека, Original_Дата, Original_Номер_Карты, Original_Сумма_Чека, Original_Чек, Original_Чек);
         }
     }
     
@@ -7517,35 +7595,43 @@ SELECT Номер_Продажи, Дата, Номер_Карты, Сумма_П
             tableMapping.ColumnMappings.Add("Номер_Прихода", "Номер_Прихода");
             tableMapping.ColumnMappings.Add("Код_Товара", "Код_Товара");
             tableMapping.ColumnMappings.Add("Количество", "Количество");
+            tableMapping.ColumnMappings.Add("Цена_Закупки", "Цена_Закупки");
+            tableMapping.ColumnMappings.Add("Цена_Продажи", "Цена_Продажи");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Состав_Прихода] WHERE (([Номер_Прихода] = @Original_Номер_Прих" +
-                "ода) AND ([Код_Товара] = @Original_Код_Товара) AND ([Количество] = @Original_Кол" +
-                "ичество))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Состав_Прихода] WHERE (([Номер_Прихода] = @Original_Номер_Прихода) AND ([Код_Товара] = @Original_Код_Товара) AND ([Количество] = @Original_Количество) AND ([Цена_Закупки] = @Original_Цена_Закупки) AND ([Цена_Продажи] = @Original_Цена_Продажи))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Прихода", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Прихода", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Код_Товара", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Код_Товара", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Количество", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Количество", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Цена_Закупки", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена_Закупки", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Цена_Продажи", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена_Продажи", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Состав_Прихода] ([Номер_Прихода], [Код_Товара], [Количество]) VALUES (@Номер_Прихода, @Код_Товара, @Количество);
-SELECT Номер_Прихода, Код_Товара, Количество FROM Состав_Прихода WHERE (Код_Товара = @Код_Товара) AND (Номер_Прихода = @Номер_Прихода)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Состав_Прихода] ([Номер_Прихода], [Код_Товара], [Количество], [Цена_Закупки], [Цена_Продажи]) VALUES (@Номер_Прихода, @Код_Товара, @Количество, @Цена_Закупки, @Цена_Продажи);
+SELECT Номер_Прихода, Код_Товара, Количество, Цена_Закупки, Цена_Продажи FROM Состав_Прихода WHERE (Код_Товара = @Код_Товара) AND (Номер_Прихода = @Номер_Прихода)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Номер_Прихода", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Прихода", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Код_Товара", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Код_Товара", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Количество", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Количество", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Цена_Закупки", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена_Закупки", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Цена_Продажи", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена_Продажи", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Состав_Прихода] SET [Номер_Прихода] = @Номер_Прихода, [Код_Товара] = @Код_Товара, [Количество] = @Количество WHERE (([Номер_Прихода] = @Original_Номер_Прихода) AND ([Код_Товара] = @Original_Код_Товара) AND ([Количество] = @Original_Количество));
-SELECT Номер_Прихода, Код_Товара, Количество FROM Состав_Прихода WHERE (Код_Товара = @Код_Товара) AND (Номер_Прихода = @Номер_Прихода)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Состав_Прихода] SET [Номер_Прихода] = @Номер_Прихода, [Код_Товара] = @Код_Товара, [Количество] = @Количество, [Цена_Закупки] = @Цена_Закупки, [Цена_Продажи] = @Цена_Продажи WHERE (([Номер_Прихода] = @Original_Номер_Прихода) AND ([Код_Товара] = @Original_Код_Товара) AND ([Количество] = @Original_Количество) AND ([Цена_Закупки] = @Original_Цена_Закупки) AND ([Цена_Продажи] = @Original_Цена_Продажи));
+SELECT Номер_Прихода, Код_Товара, Количество, Цена_Закупки, Цена_Продажи FROM Состав_Прихода WHERE (Код_Товара = @Код_Товара) AND (Номер_Прихода = @Номер_Прихода)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Номер_Прихода", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Прихода", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Код_Товара", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Код_Товара", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Количество", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Количество", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Цена_Закупки", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена_Закупки", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Цена_Продажи", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена_Продажи", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Прихода", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Прихода", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Код_Товара", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Код_Товара", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Количество", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Количество", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Цена_Закупки", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена_Закупки", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Цена_Продажи", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена_Продажи", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7561,7 +7647,8 @@ SELECT Номер_Прихода, Код_Товара, Количество FROM
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Номер_Прихода, Код_Товара, Количество FROM dbo.Состав_Прихода";
+            this._commandCollection[0].CommandText = "SELECT Номер_Прихода, Код_Товара, Количество, Цена_Закупки, Цена_Продажи FROM Сос" +
+                "тав_Прихода";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7622,10 +7709,12 @@ SELECT Номер_Прихода, Код_Товара, Количество FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Номер_Прихода, int Original_Код_Товара, int Original_Количество) {
+        public virtual int Delete(int Original_Номер_Прихода, int Original_Код_Товара, int Original_Количество, decimal Original_Цена_Закупки, decimal Original_Цена_Продажи) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Номер_Прихода));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Код_Товара));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Количество));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_Цена_Закупки));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_Цена_Продажи));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7646,10 +7735,12 @@ SELECT Номер_Прихода, Код_Товара, Количество FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Номер_Прихода, int Код_Товара, int Количество) {
+        public virtual int Insert(int Номер_Прихода, int Код_Товара, int Количество, decimal Цена_Закупки, decimal Цена_Продажи) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Номер_Прихода));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Код_Товара));
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Количество));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(Цена_Закупки));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((decimal)(Цена_Продажи));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7670,13 +7761,17 @@ SELECT Номер_Прихода, Код_Товара, Количество FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Номер_Прихода, int Код_Товара, int Количество, int Original_Номер_Прихода, int Original_Код_Товара, int Original_Количество) {
+        public virtual int Update(int Номер_Прихода, int Код_Товара, int Количество, decimal Цена_Закупки, decimal Цена_Продажи, int Original_Номер_Прихода, int Original_Код_Товара, int Original_Количество, decimal Original_Цена_Закупки, decimal Original_Цена_Продажи) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Номер_Прихода));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Код_Товара));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Количество));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Номер_Прихода));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Код_Товара));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Количество));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(Цена_Закупки));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(Цена_Продажи));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Номер_Прихода));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Код_Товара));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Количество));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Original_Цена_Закупки));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(Original_Цена_Продажи));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7697,8 +7792,8 @@ SELECT Номер_Прихода, Код_Товара, Количество FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Количество, int Original_Номер_Прихода, int Original_Код_Товара, int Original_Количество) {
-            return this.Update(Original_Номер_Прихода, Original_Код_Товара, Количество, Original_Номер_Прихода, Original_Код_Товара, Original_Количество);
+        public virtual int Update(int Количество, decimal Цена_Закупки, decimal Цена_Продажи, int Original_Номер_Прихода, int Original_Код_Товара, int Original_Количество, decimal Original_Цена_Закупки, decimal Original_Цена_Продажи) {
+            return this.Update(Original_Номер_Прихода, Original_Код_Товара, Количество, Цена_Закупки, Цена_Продажи, Original_Номер_Прихода, Original_Код_Товара, Original_Количество, Original_Цена_Закупки, Original_Цена_Продажи);
         }
     }
     
@@ -7823,38 +7918,44 @@ SELECT Номер_Прихода, Код_Товара, Количество FROM
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Состав_Продажи";
-            tableMapping.ColumnMappings.Add("Номер_Продажи", "Номер_Продажи");
             tableMapping.ColumnMappings.Add("Код_Товара", "Код_Товара");
             tableMapping.ColumnMappings.Add("Количество", "Количество");
+            tableMapping.ColumnMappings.Add("Чек", "Чек");
+            tableMapping.ColumnMappings.Add("Цена", "Цена");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Состав_Продажи] WHERE (([Номер_Продажи] = @Original_Номер_Прод" +
-                "ажи) AND ([Код_Товара] = @Original_Код_Товара) AND ([Количество] = @Original_Кол" +
-                "ичество))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [Состав_Продажи] WHERE (([Код_Товара] = @Original_Код_Товара) AND ([К" +
+                "оличество] = @Original_Количество) AND ([Цена] = @Original_Цена) AND ([Чек] = @O" +
+                "riginal_Чек))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Продажи", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Продажи", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Код_Товара", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Код_Товара", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Количество", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Количество", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Цена", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Чек", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Чек", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Состав_Продажи] ([Номер_Продажи], [Код_Товара], [Количество]) VALUES (@Номер_Продажи, @Код_Товара, @Количество);
-SELECT Номер_Продажи, Код_Товара, Количество FROM Состав_Продажи WHERE (Код_Товара = @Код_Товара) AND (Номер_Продажи = @Номер_Продажи)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Состав_Продажи] ([Код_Товара], [Количество], [Цена], [Чек]) VALUES (" +
+                "@Код_Товара, @Количество, @Цена, @Чек);\r\nSELECT Код_Товара, Количество, Цена, Че" +
+                "к FROM Состав_Продажи WHERE (Код_Товара = @Код_Товара) AND (Чек = @Чек)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Номер_Продажи", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Продажи", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Код_Товара", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Код_Товара", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Количество", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Количество", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Цена", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Чек", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Чек", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Состав_Продажи] SET [Номер_Продажи] = @Номер_Продажи, [Код_Товара] = @Код_Товара, [Количество] = @Количество WHERE (([Номер_Продажи] = @Original_Номер_Продажи) AND ([Код_Товара] = @Original_Код_Товара) AND ([Количество] = @Original_Количество));
-SELECT Номер_Продажи, Код_Товара, Количество FROM Состав_Продажи WHERE (Код_Товара = @Код_Товара) AND (Номер_Продажи = @Номер_Продажи)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Состав_Продажи] SET [Код_Товара] = @Код_Товара, [Количество] = @Количество, [Цена] = @Цена, [Чек] = @Чек WHERE (([Код_Товара] = @Original_Код_Товара) AND ([Количество] = @Original_Количество) AND ([Цена] = @Original_Цена) AND ([Чек] = @Original_Чек));
+SELECT Код_Товара, Количество, Цена, Чек FROM Состав_Продажи WHERE (Код_Товара = @Код_Товара) AND (Чек = @Чек)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Номер_Продажи", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Продажи", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Код_Товара", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Код_Товара", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Количество", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Количество", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Номер_Продажи", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Номер_Продажи", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Цена", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Чек", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Чек", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Код_Товара", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Код_Товара", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Количество", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Количество", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Цена", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Цена", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Чек", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Чек", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7870,7 +7971,7 @@ SELECT Номер_Продажи, Код_Товара, Количество FROM
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Номер_Продажи, Код_Товара, Количество FROM dbo.Состав_Продажи";
+            this._commandCollection[0].CommandText = "SELECT Код_Товара, Количество, Цена, Чек FROM Состав_Продажи";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7931,10 +8032,11 @@ SELECT Номер_Продажи, Код_Товара, Количество FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Номер_Продажи, int Original_Код_Товара, int Original_Количество) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Номер_Продажи));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Код_Товара));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Количество));
+        public virtual int Delete(int Original_Код_Товара, int Original_Количество, decimal Original_Цена, int Original_Чек) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Код_Товара));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Количество));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_Цена));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_Чек));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7955,10 +8057,11 @@ SELECT Номер_Продажи, Код_Товара, Количество FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Номер_Продажи, int Код_Товара, int Количество) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Номер_Продажи));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Код_Товара));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Количество));
+        public virtual int Insert(int Код_Товара, int Количество, decimal Цена, int Чек) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Код_Товара));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Количество));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(Цена));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(Чек));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7979,13 +8082,15 @@ SELECT Номер_Продажи, Код_Товара, Количество FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Номер_Продажи, int Код_Товара, int Количество, int Original_Номер_Продажи, int Original_Код_Товара, int Original_Количество) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Номер_Продажи));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Код_Товара));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Количество));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Номер_Продажи));
+        public virtual int Update(int Код_Товара, int Количество, decimal Цена, int Чек, int Original_Код_Товара, int Original_Количество, decimal Original_Цена, int Original_Чек) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Код_Товара));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Количество));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(Цена));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Чек));
             this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Код_Товара));
             this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Количество));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(Original_Цена));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Чек));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8006,8 +8111,8 @@ SELECT Номер_Продажи, Код_Товара, Количество FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Количество, int Original_Номер_Продажи, int Original_Код_Товара, int Original_Количество) {
-            return this.Update(Original_Номер_Продажи, Original_Код_Товара, Количество, Original_Номер_Продажи, Original_Код_Товара, Original_Количество);
+        public virtual int Update(int Количество, decimal Цена, int Original_Код_Товара, int Original_Количество, decimal Original_Цена, int Original_Чек) {
+            return this.Update(Original_Код_Товара, Количество, Цена, Original_Чек, Original_Код_Товара, Original_Количество, Original_Цена, Original_Чек);
         }
     }
     

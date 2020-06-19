@@ -35,12 +35,12 @@ namespace BookWorld.Приход
         {            
             StaticProcesser.FillDataGrid(GoodsSelectCommand, dataGridView1);
 
-            dataGridView1.Columns[0].Width = 28;
-            dataGridView1.Columns[1].Width = 30;
-            dataGridView1.Columns[2].Width = 30;
-            dataGridView1.Columns[3].Width = 300;
-            dataGridView1.Columns[4].Width = 70;
-            dataGridView1.Columns[5].Width = 70;
+            dataGridView1.Columns[0].Width = 68;
+            dataGridView1.Columns[1].Width = 68;
+            dataGridView1.Columns[2].Width = 40;
+            dataGridView1.Columns[3].Width = 280;
+            dataGridView1.Columns[4].Width = 50;
+            dataGridView1.Columns[5].Width = 56;
             //Создание таблицы для состава прихода
             IncomingGoodsDataTable.Columns.Add("Код товара", typeof(int));
             IncomingGoodsDataTable.Columns.Add("Тип товара", typeof(int));
@@ -49,6 +49,16 @@ namespace BookWorld.Приход
             IncomingGoodsDataTable.Columns.Add("Цена закупки", typeof(double));
             IncomingGoodsDataTable.Columns.Add("Цена продажи", typeof(double));
             IncomingGoodsDataTable.Columns.Add("Количество", typeof(int));
+            
+            dataGridView2.DataSource = IncomingGoodsDataTable;
+
+            dataGridView2.Columns[0].Width = 75;
+            dataGridView2.Columns[1].Width = 75;
+            dataGridView2.Columns[2].Width = 40;
+            dataGridView2.Columns[3].Width = 300;
+            dataGridView2.Columns[4].Width = 80;
+            dataGridView2.Columns[5].Width = 80;
+            dataGridView2.Columns[6].Width = 81;
         }
 
 

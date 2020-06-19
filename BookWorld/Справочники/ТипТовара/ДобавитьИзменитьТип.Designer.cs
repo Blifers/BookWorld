@@ -95,7 +95,6 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.UpdateOrder = BookWorld.BookWorldDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.Движение_ТоваровTableAdapter = null;
             this.tableAdapterManager.ЖанрыTableAdapter = null;
             this.tableAdapterManager.ПользователиTableAdapter = null;
             this.tableAdapterManager.Постоянные_КлиентыTableAdapter = null;

@@ -1,6 +1,9 @@
 ﻿using BookWorld.Base.Classes;
+using BookWorld.ДляУправляющего;
 using BookWorld.Приход;
+using BookWorld.Продажа;
 using BookWorld.Справочники;
+using BookWorld.Справочники.Постоянные_клиенты;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +22,9 @@ namespace BookWorld
         СправочникТипТовара СправочникТипТовара;
         СправочникТовары СправочникТовары;
         Приход.Приход Приход;
+        СправочникКлиенты СправочникКлиенты;
+        НоваяПродажа НоваяПродажа;
+        Отчеты Отчеты;
 
         public ОсновноеМеню()
         {
@@ -34,7 +40,11 @@ namespace BookWorld
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.WindowState = FormWindowState.Maximized;
 
-
+            if (User.Access == 1)
+            {
+                отчётыToolStripMenuItem.Visible = false;
+                управлениеToolStripMenuItem.Visible = false;
+            }
             //Убираем авторизацию пока не нужна
             //this.Enabled = false;
 
@@ -93,7 +103,36 @@ namespace BookWorld
             }
         }
 
-        private void приходToolStripMenuItem_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label2.Text = "Время: " + DateTime.Now.ToLongTimeString();
+        }
+
+        private void постоянныеКлиентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (СправочникКлиенты == null || СправочникКлиенты.IsDisposed)
+            {
+                СправочникКлиенты = new СправочникКлиенты()
+                {
+                    MdiParent = this
+                };
+                СправочникКлиенты.Show();
+            }
+        }
+
+        private void новаяПродажаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (НоваяПродажа == null || НоваяПродажа.IsDisposed)
+            {
+                НоваяПродажа = new НоваяПродажа()
+                {
+                    MdiParent = this
+                };
+                НоваяПродажа.Show();
+            }
+        }
+
+        private void новыйПриходToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Приход == null || Приход.IsDisposed)
             {
@@ -105,9 +144,21 @@ namespace BookWorld
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void отчётыToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            label2.Text = "Время: " + DateTime.Now.ToLongTimeString();
+            if (Отчеты == null || Отчеты.IsDisposed)
+            {
+                Отчеты = new Отчеты()
+                {
+                    MdiParent = this
+                };
+                Отчеты.Show();
+            }
+        }
+
+        private void управлениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

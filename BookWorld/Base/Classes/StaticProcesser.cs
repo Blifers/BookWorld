@@ -162,6 +162,30 @@ namespace BookWorld.Base
             Command.Parameters.Clear();
         }
 
+        public static void WriteExcel(DataGridView dataGrid)
+        {
+            Microsoft.Office.Interop.Excel.Application ExcelApp = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook ExcelWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet ExcelWorkSheet;
+
+            ExcelWorkBook = ExcelApp.Workbooks.Add(System.Reflection.Missing.Value);
+
+            ExcelWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ExcelWorkBook.Worksheets.get_Item(1);
+
+            for (int j = 0; j < dataGrid.ColumnCount; j++)
+                ExcelApp.Cells[1, j + 1] = dataGrid.Columns[j].HeaderText;
+
+            for (int i = 1; i <= dataGrid.Rows.Count; i++)
+            {
+                for (int j = 0; j < dataGrid.ColumnCount; j++)
+                {
+                    ExcelApp.Cells[i + 1, j + 1] = dataGrid.Rows[i - 1].Cells[j].Value;
+                }
+            }
+            ExcelApp.Visible = true;
+            ExcelApp.UserControl = true;
+        }
+
         public static void CloseConnection()
         {
             Connection.Close();

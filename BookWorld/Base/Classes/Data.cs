@@ -28,7 +28,7 @@ namespace BookWorld.Base.Classes
         /// <summary>
         /// Для передачи номера карты клиента обратно на форму.
         /// </summary>
-        public static int numberOfCard;
+        public static int numberOfCard=0;
 
         public static double priceOfBuy=0;
     }

@@ -73,6 +73,12 @@
       <DependentUpon>BookWorldDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ДляУправляющего\ДобавитьИзменитьПользователей.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ДляУправляющего\ДобавитьИзменитьПользователей.Designer.cs">
+      <DependentUpon>ДобавитьИзменитьПользователей.cs</DependentUpon>
+    </Compile>
     <Compile Include="ДляУправляющего\ДобавитьИзменитьСотрудники.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     <Compile Include="ДляУправляющего\Отчеты.Designer.cs">
       <DependentUpon>Отчеты.cs</DependentUpon>
     </Compile>
+    <Compile Include="ДляУправляющего\Пользователи.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ДляУправляющего\Пользователи.Designer.cs">
+      <DependentUpon>Пользователи.cs</DependentUpon>
+    </Compile>
     <Compile Include="ДляУправляющего\Сотрудники.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,12 @@
     </Compile>
     <Compile Include="ДляУправляющего\Управление.Designer.cs">
       <DependentUpon>Управление.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Приход\ДанныеДляПрихода.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Приход\ДанныеДляПрихода.Designer.cs">
+      <DependentUpon>ДанныеДляПрихода.cs</DependentUpon>
     </Compile>
     <Compile Include="Приход\Приход.cs">
       <SubType>Form</SubType>
@@ -163,10 +181,10 @@
     <Compile Include="Справочники\ТипТовара\СправочникТипТовара.Designer.cs">
       <DependentUpon>СправочникТипТовара.cs</DependentUpon>
     </Compile>
-    <Compile Include="Справочники\Товары\ДобавитьТовар.cs">
+    <Compile Include="Приход\ДобавитьТовар.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Справочники\Товары\ДобавитьТовар.Designer.cs">
+    <Compile Include="Приход\ДобавитьТовар.Designer.cs">
       <DependentUpon>ДобавитьТовар.cs</DependentUpon>
     </Compile>
     <Compile Include="Справочники\Товары\ИзменитьЦенуНазваниеТовара.cs">
@@ -197,17 +215,26 @@
     <EmbeddedResource Include="Base\ОсновноеМеню.resx">
       <DependentUpon>ОсновноеМеню.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ДляУправляющего\ДобавитьИзменитьПользователей.resx">
+      <DependentUpon>ДобавитьИзменитьПользователей.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ДляУправляющего\ДобавитьИзменитьСотрудники.resx">
       <DependentUpon>ДобавитьИзменитьСотрудники.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ДляУправляющего\Отчеты.resx">
       <DependentUpon>Отчеты.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ДляУправляющего\Пользователи.resx">
+      <DependentUpon>Пользователи.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ДляУправляющего\Сотрудники.resx">
       <DependentUpon>Сотрудники.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ДляУправляющего\Управление.resx">
       <DependentUpon>Управление.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Приход\ДанныеДляПрихода.resx">
+      <DependentUpon>ДанныеДляПрихода.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Приход\Приход.resx">
       <DependentUpon>Приход.cs</DependentUpon>
@@ -242,7 +269,7 @@
     <EmbeddedResource Include="Справочники\ТипТовара\СправочникТипТовара.resx">
       <DependentUpon>СправочникТипТовара.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Справочники\Товары\ДобавитьТовар.resx">
+    <EmbeddedResource Include="Приход\ДобавитьТовар.resx">
       <DependentUpon>ДобавитьТовар.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Справочники\Товары\ИзменитьЦенуНазваниеТовара.resx">

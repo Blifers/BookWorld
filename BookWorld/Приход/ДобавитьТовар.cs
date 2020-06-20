@@ -24,10 +24,13 @@ namespace BookWorld.Справочники.Товары
 
         private void ДобавитьИзменитьТовар_Load(object sender, EventArgs e)
         {
+            TitleTextBox.Focus();
             this.жанрыTableAdapter.Fill(this.bookWorldDataSet.Жанры);
             this.тип_ТовараTableAdapter.Fill(this.bookWorldDataSet.Тип_Товара);
-            TypeComboBox.SelectedIndex = 0;
-            GenreComboBox.SelectedIndex = 0;
+            TypeComboBox.Text = "";
+            GenreComboBox.Text = "";
+            //TypeComboBox.SelectedIndex = 0;
+            //GenreComboBox.SelectedIndex = 0;
         }
 
         private void BuyPriceNumericUpDown_ValueChanged(object sender, EventArgs e)
@@ -35,7 +38,7 @@ namespace BookWorld.Справочники.Товары
             double sellPrice = (double)(BuyPriceNumericUpDown.Value * Properties.Settings.Default.Percentage);
             int c = (int)sellPrice;
             c = c / 10;
-            c =c* 10;
+            c = (c+1) * 10;
             SellPriceNumericUpDown.Value =(decimal)c;
         }
 
@@ -43,11 +46,6 @@ namespace BookWorld.Справочники.Товары
         {
             try
             {
-                //
-                //Добавить проверку на заполненность полей.
-                //
-
-
                 SqlParameter type = new SqlParameter("type", TypeComboBox.SelectedValue);
                 SqlParameter title = new SqlParameter("title", TitleTextBox.Text);
                 SqlParameter price = new SqlParameter("price", SellPriceNumericUpDown.Value);
@@ -93,6 +91,16 @@ namespace BookWorld.Справочники.Товары
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void BuyPriceNumericUpDown_Enter(object sender, EventArgs e)
+        {
+            BuyPriceNumericUpDown.Select(0, BuyPriceNumericUpDown.Text.Length);
+        }
+
+        private void SellPriceNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            SellPriceNumericUpDown.Select(0, SellPriceNumericUpDown.Text.Length);
         }
     }
 }

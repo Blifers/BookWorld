@@ -47,12 +47,12 @@ namespace BookWorld.ДляУправляющего
                 }
                 if (ReportsComboBox.SelectedIndex == 1)
                 {
-                    CommandForReportAboutGenres = "Select Жанры.Наименование, Count(Жанр) AS Количество  FROM Товары right join Состав_Продажи ON Состав_Продажи.Код_Товара = Товары.Код_Товара inner join Жанры ON Код_Жанра = Товары.Жанр inner join Продажа ON Продажа.Чек = Состав_Продажи.Чек Where Продажа.Дата>='" + StartDatePicker.Value.ToShortDateString() + "' And Продажа.Дата<='" + EndDatePicker.Value.ToShortDateString() + "' GROUP BY Жанры.Наименование";
+                    CommandForReportAboutGenres = "Select Жанры.Наименование, SUM(Количество) AS Количество  FROM Товары right join Состав_Продажи ON Состав_Продажи.Код_Товара = Товары.Код_Товара inner join Жанры ON Код_Жанра = Товары.Жанр inner join Продажа ON Продажа.Чек = Состав_Продажи.Чек Where Продажа.Дата>='" + StartDatePicker.Value.ToShortDateString() + "' And Продажа.Дата<='" + EndDatePicker.Value.ToShortDateString() + "' GROUP BY Жанры.Наименование";
                     StaticProcesser.FillDataGrid(CommandForReportAboutGenres, ReportDataGrid);
                 }
                 if (ReportsComboBox.SelectedIndex == 2)
                 {
-                    CommandForReportAboutTypes = "Select Тип_Товара.Наименование, Count(Тип_Товара) AS Количество FROM Товары right join Состав_Продажи ON Состав_Продажи.Код_Товара = Товары.Код_Товара inner join Тип_Товара ON Тип_Товара.Код_Типа=Товары.Тип_Товара inner join Продажа ON Продажа.Чек=Состав_Продажи.Чек Where Продажа.Дата>='" + StartDatePicker.Value.ToShortDateString() + "' and Продажа.Дата<='" + EndDatePicker.Value.ToShortDateString() + "' GROUP BY Тип_Товара.Наименование";
+                    CommandForReportAboutTypes = "Select Тип_Товара.Наименование, SUM(Количество) AS Количество FROM Товары right join Состав_Продажи ON Состав_Продажи.Код_Товара = Товары.Код_Товара inner join Тип_Товара ON Тип_Товара.Код_Типа=Товары.Тип_Товара inner join Продажа ON Продажа.Чек=Состав_Продажи.Чек Where Продажа.Дата>='" + StartDatePicker.Value.ToShortDateString() + "' and Продажа.Дата<='" + EndDatePicker.Value.ToShortDateString() + "' GROUP BY Тип_Товара.Наименование";
                     StaticProcesser.FillDataGrid(CommandForReportAboutTypes, ReportDataGrid);
                 }
                 if (ReportsComboBox.SelectedIndex == 3)

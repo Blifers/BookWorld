@@ -5378,22 +5378,22 @@ namespace BookWorld.BookWorldDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Пользователи] WHERE (([Имя_Пользователя] = @Original_Имя_Польз" +
-                "ователя) AND ([Пароль] = @Original_Пароль))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [Пользователи] WHERE (([Имя_Пользователя] = @Original_Имя_Пользовател" +
+                "я) AND ([Пароль] = @Original_Пароль))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Имя_Пользователя", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Имя_Пользователя", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Пароль", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Пароль", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Пользователи] ([Имя_Пользователя], [Пароль]) VALUES (@Имя_Поль" +
-                "зователя, @Пароль);\r\nSELECT Имя_Пользователя, Пароль FROM Пользователи WHERE (Им" +
-                "я_Пользователя = @Имя_Пользователя)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Пользователи] ([Имя_Пользователя], [Пароль]) VALUES (@Имя_Пользовате" +
+                "ля, @Пароль);\r\nSELECT Имя_Пользователя, Пароль FROM Пользователи WHERE (Имя_Поль" +
+                "зователя = @Имя_Пользователя)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Имя_Пользователя", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Имя_Пользователя", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Пароль", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Пароль", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Пользователи] SET [Имя_Пользователя] = @Имя_Пользователя, [Пароль] = @Пароль WHERE (([Имя_Пользователя] = @Original_Имя_Пользователя) AND ([Пароль] = @Original_Пароль));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Пользователи] SET [Имя_Пользователя] = @Имя_Пользователя, [Пароль] = @Пароль WHERE (([Имя_Пользователя] = @Original_Имя_Пользователя) AND ([Пароль] = @Original_Пароль));
 SELECT Имя_Пользователя, Пароль FROM Пользователи WHERE (Имя_Пользователя = @Имя_Пользователя)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Имя_Пользователя", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Имя_Пользователя", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5415,7 +5415,7 @@ SELECT Имя_Пользователя, Пароль FROM Пользовател
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Имя_Пользователя, Пароль FROM dbo.Пользователи";
+            this._commandCollection[0].CommandText = "SELECT Имя_Пользователя, Пароль FROM Пользователи";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

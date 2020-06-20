@@ -23,6 +23,7 @@ namespace BookWorld.ДляУправляющего
         private void Сотрудники_Load(object sender, EventArgs e)
         {
             this.сотрудникиTableAdapter.Fill(this.bookWorldDataSet.Сотрудники);
+            ControlExtraControls(false);
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -70,11 +71,12 @@ namespace BookWorld.ДляУправляющего
                     var result = MessageBox.Show("Вы уверены, что хотите уволить этого сотрудника?", "Подтверждение увольнения", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        string Command = "Update Сотрудники SET Уволен=@fired Where Код_Сотрудника=codeOfWorker";
+                        string Command = "Update Сотрудники SET Уволен=@fired Where Код_Сотрудника=@codeOfWorker";
                         SqlParameter fired = new SqlParameter("fired", FiredDatePicker.Value.ToShortDateString());
                         SqlParameter codeOfWorker = new SqlParameter("codeOfWorker", Convert.ToString(сотрудникиDataGridView.CurrentRow.Cells[0].Value));
                         StaticProcesser.ExecuteCommand(Command, fired, codeOfWorker);
                         сотрудникиTableAdapter.Fill(this.bookWorldDataSet.Сотрудники);
+                        ControlExtraControls(false);
                     }
                     else
                     {

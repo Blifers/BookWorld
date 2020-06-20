@@ -110,6 +110,18 @@ namespace BookWorld.Base
             Connection.Close();
             Command.Parameters.Clear();
         }
+        public static void ExecuteCommand(string commandText, SqlParameter p1)
+        {
+            SqlCommand Command = new SqlCommand();
+            Command.Connection = Connection;
+            Command.CommandText = commandText;
+            Command.Parameters.Add(p1);
+            Connection.Open();
+            Command.ExecuteNonQuery();
+            Connection.Close();
+            Command.Parameters.Clear();
+        }
+
         public static void ExecuteCommand(string commandText, SqlParameter p1, SqlParameter p2, SqlParameter p3, SqlParameter p4)
         {
             SqlCommand Command = new SqlCommand();

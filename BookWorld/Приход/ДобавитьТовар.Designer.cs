@@ -58,7 +58,7 @@
             this.CloseButton.Location = new System.Drawing.Point(325, 257);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
-            this.CloseButton.TabIndex = 0;
+            this.CloseButton.TabIndex = 6;
             this.CloseButton.Text = "Закрыть";
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
@@ -68,7 +68,7 @@
             this.AddButton.Location = new System.Drawing.Point(16, 216);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(384, 23);
-            this.AddButton.TabIndex = 16;
+            this.AddButton.TabIndex = 5;
             this.AddButton.Text = "Добавить";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
@@ -83,7 +83,8 @@
             0});
             this.SellPriceNumericUpDown.Name = "SellPriceNumericUpDown";
             this.SellPriceNumericUpDown.Size = new System.Drawing.Size(298, 20);
-            this.SellPriceNumericUpDown.TabIndex = 14;
+            this.SellPriceNumericUpDown.TabIndex = 4;
+            this.SellPriceNumericUpDown.Enter += new System.EventHandler(this.SellPriceNumericUpDown_ValueChanged);
             // 
             // BuyPriceNumericUpDown
             // 
@@ -95,8 +96,9 @@
             0});
             this.BuyPriceNumericUpDown.Name = "BuyPriceNumericUpDown";
             this.BuyPriceNumericUpDown.Size = new System.Drawing.Size(298, 20);
-            this.BuyPriceNumericUpDown.TabIndex = 13;
+            this.BuyPriceNumericUpDown.TabIndex = 3;
             this.BuyPriceNumericUpDown.ValueChanged += new System.EventHandler(this.BuyPriceNumericUpDown_ValueChanged);
+            this.BuyPriceNumericUpDown.Enter += new System.EventHandler(this.BuyPriceNumericUpDown_Enter);
             // 
             // GenreComboBox
             // 
@@ -106,7 +108,7 @@
             this.GenreComboBox.Location = new System.Drawing.Point(102, 97);
             this.GenreComboBox.Name = "GenreComboBox";
             this.GenreComboBox.Size = new System.Drawing.Size(298, 21);
-            this.GenreComboBox.TabIndex = 12;
+            this.GenreComboBox.TabIndex = 2;
             this.GenreComboBox.ValueMember = "Код_Жанра";
             // 
             // жанрыBindingSource
@@ -127,7 +129,7 @@
             this.TypeComboBox.Location = new System.Drawing.Point(102, 57);
             this.TypeComboBox.Name = "TypeComboBox";
             this.TypeComboBox.Size = new System.Drawing.Size(298, 21);
-            this.TypeComboBox.TabIndex = 11;
+            this.TypeComboBox.TabIndex = 1;
             this.TypeComboBox.ValueMember = "Код_Типа";
             this.TypeComboBox.SelectedIndexChanged += new System.EventHandler(this.TypeComboBox_SelectedIndexChanged);
             // 
@@ -141,7 +143,7 @@
             this.TitleTextBox.Location = new System.Drawing.Point(102, 17);
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(298, 20);
-            this.TitleTextBox.TabIndex = 10;
+            this.TitleTextBox.TabIndex = 0;
             // 
             // тип_ТовараTableAdapter
             // 
@@ -196,7 +198,7 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Цена продажи";
             // 
-            // ДобавитьИзменитьТовар
+            // ДобавитьТовар
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -214,7 +216,7 @@
             this.Controls.Add(this.TypeComboBox);
             this.Controls.Add(this.TitleTextBox);
             this.Controls.Add(this.CloseButton);
-            this.Name = "ДобавитьИзменитьТовар";
+            this.Name = "ДобавитьТовар";
             this.ShowIcon = false;
             this.Text = "Добавить товар";
             this.Load += new System.EventHandler(this.ДобавитьИзменитьТовар_Load);

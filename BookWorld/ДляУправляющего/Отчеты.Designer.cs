@@ -43,6 +43,8 @@
             // 
             // ReportDataGrid
             // 
+            this.ReportDataGrid.AllowUserToAddRows = false;
+            this.ReportDataGrid.AllowUserToDeleteRows = false;
             this.ReportDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ReportDataGrid.Location = new System.Drawing.Point(12, 147);
             this.ReportDataGrid.Name = "ReportDataGrid";
@@ -99,8 +101,8 @@
             this.ReportsComboBox.Items.AddRange(new object[] {
             "Товары для пополнения",
             "Популярность жанров",
-            "Популярность типо",
-            "Затраты на товары и выручка"});
+            "Популярность типов",
+            "Финансовые показатели"});
             this.ReportsComboBox.Location = new System.Drawing.Point(119, 12);
             this.ReportsComboBox.Name = "ReportsComboBox";
             this.ReportsComboBox.Size = new System.Drawing.Size(274, 21);
@@ -137,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 499);
+            this.ClientSize = new System.Drawing.Size(880, 491);
             this.ControlBox = false;
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

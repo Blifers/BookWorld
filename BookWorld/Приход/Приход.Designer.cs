@@ -41,10 +41,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.SellPriceNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.BuyPriceNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.ClearButton = new System.Windows.Forms.Button();
             this.FormDocButton = new System.Windows.Forms.Button();
             this.CommentRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.ClearButton = new System.Windows.Forms.Button();
+            this.DeleteRowButton = new System.Windows.Forms.Button();
+            this.ClearTableButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AmountNumericUpDown)).BeginInit();
@@ -54,7 +56,7 @@
             // 
             // ExitButton
             // 
-            this.ExitButton.Location = new System.Drawing.Point(711, 353);
+            this.ExitButton.Location = new System.Drawing.Point(711, 355);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(75, 23);
             this.ExitButton.TabIndex = 0;
@@ -74,6 +76,8 @@
             this.dataGridView1.Size = new System.Drawing.Size(605, 329);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.TabStop = false;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // SearchTextBox
             // 
@@ -145,6 +149,7 @@
             0,
             0,
             0});
+            this.AmountNumericUpDown.Enter += new System.EventHandler(this.AmountNumericUpDown_Enter);
             // 
             // label5
             // 
@@ -175,6 +180,7 @@
             this.SellPriceNumericUpDown.Name = "SellPriceNumericUpDown";
             this.SellPriceNumericUpDown.Size = new System.Drawing.Size(69, 20);
             this.SellPriceNumericUpDown.TabIndex = 2;
+            this.SellPriceNumericUpDown.Enter += new System.EventHandler(this.SellPriceNumericUpDown_Enter);
             // 
             // BuyPriceNumericUpDown
             // 
@@ -188,16 +194,7 @@
             this.BuyPriceNumericUpDown.Size = new System.Drawing.Size(69, 20);
             this.BuyPriceNumericUpDown.TabIndex = 1;
             this.BuyPriceNumericUpDown.ValueChanged += new System.EventHandler(this.BuyPriceNumericUpDown_ValueChanged);
-            // 
-            // ClearButton
-            // 
-            this.ClearButton.Image = global::BookWorld.Properties.Resources.hotpng_com;
-            this.ClearButton.Location = new System.Drawing.Point(281, 345);
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(45, 39);
-            this.ClearButton.TabIndex = 11;
-            this.ClearButton.UseVisualStyleBackColor = true;
-            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            this.BuyPriceNumericUpDown.Enter += new System.EventHandler(this.BuyPriceNumericUpDown_Enter);
             // 
             // FormDocButton
             // 
@@ -226,12 +223,44 @@
             this.label3.TabIndex = 27;
             this.label3.Text = "Комментарий";
             // 
+            // ClearButton
+            // 
+            this.ClearButton.Image = global::BookWorld.Properties.Resources.hotpng_com;
+            this.ClearButton.Location = new System.Drawing.Point(281, 345);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(45, 39);
+            this.ClearButton.TabIndex = 11;
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // DeleteRowButton
+            // 
+            this.DeleteRowButton.Location = new System.Drawing.Point(456, 355);
+            this.DeleteRowButton.Name = "DeleteRowButton";
+            this.DeleteRowButton.Size = new System.Drawing.Size(108, 23);
+            this.DeleteRowButton.TabIndex = 28;
+            this.DeleteRowButton.Text = "Удалить строку";
+            this.DeleteRowButton.UseVisualStyleBackColor = true;
+            this.DeleteRowButton.Click += new System.EventHandler(this.DeleteRowButton_Click);
+            // 
+            // ClearTableButton
+            // 
+            this.ClearTableButton.Location = new System.Drawing.Point(579, 355);
+            this.ClearTableButton.Name = "ClearTableButton";
+            this.ClearTableButton.Size = new System.Drawing.Size(115, 23);
+            this.ClearTableButton.TabIndex = 29;
+            this.ClearTableButton.Text = "Очистить таблицу";
+            this.ClearTableButton.UseVisualStyleBackColor = true;
+            this.ClearTableButton.Click += new System.EventHandler(this.ClearTableButton_Click);
+            // 
             // Приход
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 652);
+            this.ClientSize = new System.Drawing.Size(801, 648);
             this.ControlBox = false;
+            this.Controls.Add(this.ClearTableButton);
+            this.Controls.Add(this.DeleteRowButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.CommentRichTextBox);
             this.Controls.Add(this.FormDocButton);
@@ -283,5 +312,7 @@
         private System.Windows.Forms.Button FormDocButton;
         private System.Windows.Forms.RichTextBox CommentRichTextBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button DeleteRowButton;
+        private System.Windows.Forms.Button ClearTableButton;
     }
 }

@@ -14,6 +14,8 @@ namespace BookWorld.ДляУправляющего
     public partial class Управление : Form
     {
         Сотрудники Сотрудники;
+        Отчеты Отчеты;
+        Пользователи Пользователи;
         public Управление()
         {
             InitializeComponent();
@@ -80,6 +82,30 @@ namespace BookWorld.ДляУправляющего
                     MdiParent = this.MdiParent
                 };
                 Сотрудники.Show();
+            }
+        }
+
+        private void ReportsButton_Click(object sender, EventArgs e)
+        {
+            if (Отчеты == null || Отчеты.IsDisposed)
+            {
+                Отчеты = new Отчеты()
+                {
+                    MdiParent = this.MdiParent
+                };
+                Отчеты.Show();
+            }
+        }
+
+        private void UserButton_Click(object sender, EventArgs e)
+        {
+            if (Пользователи == null || Пользователи.IsDisposed)
+            {
+                Пользователи = new Пользователи()
+                {
+                    MdiParent = this.MdiParent
+                };
+                Пользователи.Show();
             }
         }
     }

@@ -36,11 +36,10 @@
             this.PercentageTextBox = new System.Windows.Forms.TextBox();
             this.DiscountTextBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.CloseButton = new System.Windows.Forms.Button();
             this.UserButton = new System.Windows.Forms.Button();
             this.WorkersButton = new System.Windows.Forms.Button();
-            this.ChangeAdminPasswordButton = new System.Windows.Forms.Button();
+            this.ReportsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SaveButton
@@ -114,20 +113,12 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(243, -3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2, 178);
+            this.panel1.Size = new System.Drawing.Size(2, 210);
             this.panel1.TabIndex = 7;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Location = new System.Drawing.Point(-5, 174);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 2);
-            this.panel2.TabIndex = 8;
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(300, 231);
+            this.CloseButton.Location = new System.Drawing.Point(300, 153);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 9;
@@ -137,16 +128,17 @@
             // 
             // UserButton
             // 
-            this.UserButton.Location = new System.Drawing.Point(251, 13);
+            this.UserButton.Location = new System.Drawing.Point(251, 15);
             this.UserButton.Name = "UserButton";
             this.UserButton.Size = new System.Drawing.Size(124, 23);
             this.UserButton.TabIndex = 10;
             this.UserButton.Text = "Пользователи";
             this.UserButton.UseVisualStyleBackColor = true;
+            this.UserButton.Click += new System.EventHandler(this.UserButton_Click);
             // 
             // WorkersButton
             // 
-            this.WorkersButton.Location = new System.Drawing.Point(251, 59);
+            this.WorkersButton.Location = new System.Drawing.Point(251, 60);
             this.WorkersButton.Name = "WorkersButton";
             this.WorkersButton.Size = new System.Drawing.Size(124, 23);
             this.WorkersButton.TabIndex = 11;
@@ -154,26 +146,26 @@
             this.WorkersButton.UseVisualStyleBackColor = true;
             this.WorkersButton.Click += new System.EventHandler(this.WorkersButton_Click);
             // 
-            // ChangeAdminPasswordButton
+            // ReportsButton
             // 
-            this.ChangeAdminPasswordButton.Location = new System.Drawing.Point(251, 103);
-            this.ChangeAdminPasswordButton.Name = "ChangeAdminPasswordButton";
-            this.ChangeAdminPasswordButton.Size = new System.Drawing.Size(124, 23);
-            this.ChangeAdminPasswordButton.TabIndex = 12;
-            this.ChangeAdminPasswordButton.Text = "Изменить пароль";
-            this.ChangeAdminPasswordButton.UseVisualStyleBackColor = true;
+            this.ReportsButton.Location = new System.Drawing.Point(251, 105);
+            this.ReportsButton.Name = "ReportsButton";
+            this.ReportsButton.Size = new System.Drawing.Size(124, 23);
+            this.ReportsButton.TabIndex = 12;
+            this.ReportsButton.Text = "Отчеты";
+            this.ReportsButton.UseVisualStyleBackColor = true;
+            this.ReportsButton.Click += new System.EventHandler(this.ReportsButton_Click);
             // 
             // Управление
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 262);
+            this.ClientSize = new System.Drawing.Size(383, 190);
             this.ControlBox = false;
-            this.Controls.Add(this.ChangeAdminPasswordButton);
+            this.Controls.Add(this.ReportsButton);
             this.Controls.Add(this.WorkersButton);
             this.Controls.Add(this.UserButton);
             this.Controls.Add(this.CloseButton);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.DiscountTextBox);
             this.Controls.Add(this.PercentageTextBox);
@@ -202,10 +194,9 @@
         private System.Windows.Forms.TextBox PercentageTextBox;
         private System.Windows.Forms.TextBox DiscountTextBox;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button UserButton;
         private System.Windows.Forms.Button WorkersButton;
-        private System.Windows.Forms.Button ChangeAdminPasswordButton;
+        private System.Windows.Forms.Button ReportsButton;
     }
 }

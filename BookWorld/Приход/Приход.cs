@@ -35,16 +35,14 @@ namespace BookWorld.Приход
         {            
             StaticProcesser.FillDataGrid(GoodsSelectCommand, dataGridView1);
 
-            dataGridView1.Columns[0].Width = 68;
-            dataGridView1.Columns[1].Width = 68;
+            dataGridView1.Columns[0].Width = 60;
+            dataGridView1.Columns[1].Width = 60;
             dataGridView1.Columns[2].Width = 40;
-            dataGridView1.Columns[3].Width = 280;
+            dataGridView1.Columns[3].Width = 270;
             dataGridView1.Columns[4].Width = 50;
             dataGridView1.Columns[5].Width = 56;
             //Создание таблицы для состава прихода
             IncomingGoodsDataTable.Columns.Add("Код товара", typeof(int));
-            IncomingGoodsDataTable.Columns.Add("Тип товара", typeof(int));
-            IncomingGoodsDataTable.Columns.Add("Жанр", typeof(int));
             IncomingGoodsDataTable.Columns.Add("Наименование", typeof(string));
             IncomingGoodsDataTable.Columns.Add("Цена закупки", typeof(double));
             IncomingGoodsDataTable.Columns.Add("Цена продажи", typeof(double));
@@ -53,12 +51,10 @@ namespace BookWorld.Приход
             dataGridView2.DataSource = IncomingGoodsDataTable;
 
             dataGridView2.Columns[0].Width = 75;
-            dataGridView2.Columns[1].Width = 75;
-            dataGridView2.Columns[2].Width = 40;
-            dataGridView2.Columns[3].Width = 300;
+            dataGridView2.Columns[1].Width = 320;
+            dataGridView2.Columns[2].Width = 90;
+            dataGridView2.Columns[3].Width = 90;
             dataGridView2.Columns[4].Width = 80;
-            dataGridView2.Columns[5].Width = 80;
-            dataGridView2.Columns[6].Width = 81;
         }
 
 
@@ -96,11 +92,11 @@ namespace BookWorld.Приход
             dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells[0];
         }
 
-        private void AddRow(int codeOfGood,int typeOfGood,int genre,string title,double priceOfBuy,double priceOfSell,int amount)
+        private void AddRow(int codeOfGood,string title,double priceOfBuy,double priceOfSell,int amount)
         {
             try
             {
-                IncomingGoodsDataTable.Rows.Add(codeOfGood, typeOfGood, genre, title, priceOfBuy,priceOfSell,amount);
+                IncomingGoodsDataTable.Rows.Add(codeOfGood, title, priceOfBuy,priceOfSell,amount);
                 dataGridView2.DataSource = IncomingGoodsDataTable;
             }
             catch(Exception ex)
@@ -114,14 +110,12 @@ namespace BookWorld.Приход
             try
             {
                 int codeOfGood = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-                int typeOfGood = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value);
-                int genre = Convert.ToInt32(dataGridView1.CurrentRow.Cells[2].Value);
                 string title = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
                 double priceOfBuy = Convert.ToDouble(BuyPriceNumericUpDown.Value);
                 double priceOfSell = Convert.ToDouble(dataGridView1.CurrentRow.Cells[4].Value);
                 int amount = Convert.ToInt32(AmountNumericUpDown.Value);
 
-                AddRow(codeOfGood, typeOfGood, genre, title, priceOfBuy, priceOfSell, amount);
+                AddRow(codeOfGood, title, priceOfBuy, priceOfSell, amount);
 
                 
                 AmountNumericUpDown.Value = 1;
@@ -135,12 +129,7 @@ namespace BookWorld.Приход
 
         private void BuyPriceNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            double sellPrice = (double)(BuyPriceNumericUpDown.Value * Properties.Settings.Default.Percentage);
-            int c = (int)sellPrice;
-            c = c / 10;
-            c = c * 10;
-            SellPriceNumericUpDown.Value = (decimal)c;
-
+            SellPriceNumericUpDown.Value = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[4].Value);
         }
 
         private void FormDocButton_Click(object sender, EventArgs e)
@@ -180,13 +169,13 @@ namespace BookWorld.Приход
                     codeOfGood = Convert.ToInt32(dataGridView2.Rows[i].Cells[0].Value);
                     PcodeOfGood = new SqlParameter("codeOfGood", codeOfGood);
 
-                    priceOfBuy = Convert.ToDouble(dataGridView2.Rows[i].Cells[4].Value);
+                    priceOfBuy = Convert.ToDouble(dataGridView2.Rows[i].Cells[2].Value);
                     PpriceOfBuy = new SqlParameter("priceOfBuy", priceOfBuy);
 
-                    priceOfSell = Convert.ToDouble(dataGridView2.Rows[i].Cells[5].Value);
+                    priceOfSell = Convert.ToDouble(dataGridView2.Rows[i].Cells[3].Value);
                     PpriceOfSell = new SqlParameter("priceOfSell", priceOfSell);
 
-                    amount = Convert.ToInt32(dataGridView2.Rows[i].Cells[6].Value);
+                    amount = Convert.ToInt32(dataGridView2.Rows[i].Cells[4].Value);
                     Pamount = new SqlParameter("amount", amount);
 
                     StaticProcesser.ExecuteCommand(updCommand, Pamount, PcodeOfGood);
@@ -205,6 +194,94 @@ namespace BookWorld.Приход
                 MessageBox.Show(place);
                 StaticHelper.ErrorNotifier(ex);
             }
+        }
+
+        private void AmountNumericUpDown_Enter(object sender, EventArgs e)
+        {
+            AmountNumericUpDown.Select(0, AmountNumericUpDown.Text.Length);
+        }
+
+        private void BuyPriceNumericUpDown_Enter(object sender, EventArgs e)
+        {
+            BuyPriceNumericUpDown.Select(0, BuyPriceNumericUpDown.Text.Length);
+        }
+
+        private void SellPriceNumericUpDown_Enter(object sender, EventArgs e)
+        {
+            SellPriceNumericUpDown.Select(0, SellPriceNumericUpDown.Text.Length);
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AmountNumericUpDown.Value = 0;
+            BuyPriceNumericUpDown.Value = 0;
+            SellPriceNumericUpDown.Value = 0;
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                Данные_для_прихода f = new Данные_для_прихода(BuyPriceNumericUpDown, AmountNumericUpDown);
+                f.ShowDialog();
+                if (AmountNumericUpDown.Value != 0)
+                {
+                    int codeOfGood = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                    string title = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value);
+                    double priceOfBuy = Convert.ToDouble(BuyPriceNumericUpDown.Value);
+                    double priceOfSell = Convert.ToDouble(dataGridView1.CurrentRow.Cells[4].Value);
+                    int amount = Convert.ToInt32(AmountNumericUpDown.Value);
+
+                    AddRow(codeOfGood, title, priceOfBuy, priceOfSell, amount);
+
+
+                    AmountNumericUpDown.Value = 1;
+                    BuyPriceNumericUpDown.Value = 0;
+                    SellPriceNumericUpDown.Value = 0;
+                }
+            }
+            catch(Exception ex)
+            {
+                StaticHelper.ErrorNotifier(ex);
+            }
+        }
+
+        private void DeleteRowButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int numberOfRow = dataGridView2.CurrentRow.Index;
+
+                DataTable tempDT = new DataTable();
+                tempDT.Columns.Add("Код товара", typeof(int));
+                tempDT.Columns.Add("Наименование", typeof(string));
+                tempDT.Columns.Add("Цена закупки", typeof(double));
+                tempDT.Columns.Add("Цена продажи", typeof(double));
+                tempDT.Columns.Add("Количество", typeof(int));
+                
+                for (int i = 0; i < dataGridView2.Rows.Count; i++)
+                {
+                    if (i != numberOfRow)
+                    {
+                        tempDT.Rows.Add(Convert.ToInt32(dataGridView2.Rows[i].Cells[0].Value), Convert.ToString(dataGridView2.Rows[i].Cells[1].Value), Convert.ToDouble(dataGridView2.Rows[i].Cells[2].Value), Convert.ToInt32(dataGridView2.Rows[i].Cells[3].Value), Convert.ToDouble(dataGridView2.Rows[i].Cells[4].Value));
+                    }
+                    else
+                    {
+
+                    }
+                }
+                IncomingGoodsDataTable = tempDT;
+                dataGridView2.DataSource = IncomingGoodsDataTable;
+            }
+            catch (Exception ex)
+            {
+                StaticHelper.ErrorNotifier(ex);
+            }
+        }
+
+        private void ClearTableButton_Click(object sender, EventArgs e)
+        {
+            IncomingGoodsDataTable.Clear();
         }
     }
 }

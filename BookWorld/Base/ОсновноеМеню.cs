@@ -25,6 +25,9 @@ namespace BookWorld
         СправочникКлиенты СправочникКлиенты;
         НоваяПродажа НоваяПродажа;
         Отчеты Отчеты;
+        ПросмотрПродаж ПросмотрПродаж;
+        ПросмотрПриходов ПросмотрПриходов;
+        Управление Управление;
 
         public ОсновноеМеню()
         {
@@ -158,7 +161,37 @@ namespace BookWorld
 
         private void управлениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (Управление == null || Управление.IsDisposed)
+            {
+                Управление = new Управление()
+                {
+                    MdiParent = this
+                };
+                Управление.Show();
+            }
+        }
+        private void просмотрДокументовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ПросмотрПродаж == null || ПросмотрПродаж.IsDisposed)
+            {
+                ПросмотрПродаж = new ПросмотрПродаж()
+                {
+                    MdiParent = this
+                };
+                ПросмотрПродаж.Show();
+            }
+        }
 
+        private void просмотрДокументовToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (ПросмотрПриходов == null || ПросмотрПриходов.IsDisposed)
+            {
+                ПросмотрПриходов = new ПросмотрПриходов()
+                {
+                    MdiParent = this
+                };
+                ПросмотрПриходов.Show();
+            }
         }
     }
 }

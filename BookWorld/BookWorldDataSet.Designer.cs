@@ -2443,6 +2443,8 @@ namespace BookWorld {
             
             private global::System.Data.DataColumn columnТелефон;
             
+            private global::System.Data.DataColumn columnДолжность;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public СотрудникиDataTable() {
@@ -2526,6 +2528,14 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ДолжностьColumn {
+                get {
+                    return this.columnДолжность;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2561,7 +2571,7 @@ namespace BookWorld {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public СотрудникиRow AddСотрудникиRow(string ФИО, System.DateTime Принят, System.DateTime Уволен, System.DateTime Дата_Рождения, string Телефон) {
+            public СотрудникиRow AddСотрудникиRow(string ФИО, System.DateTime Принят, System.DateTime Уволен, System.DateTime Дата_Рождения, string Телефон, string Должность) {
                 СотрудникиRow rowСотрудникиRow = ((СотрудникиRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2569,7 +2579,8 @@ namespace BookWorld {
                         Принят,
                         Уволен,
                         Дата_Рождения,
-                        Телефон};
+                        Телефон,
+                        Должность};
                 rowСотрудникиRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowСотрудникиRow);
                 return rowСотрудникиRow;
@@ -2605,6 +2616,7 @@ namespace BookWorld {
                 this.columnУволен = base.Columns["Уволен"];
                 this.columnДата_Рождения = base.Columns["Дата_Рождения"];
                 this.columnТелефон = base.Columns["Телефон"];
+                this.columnДолжность = base.Columns["Должность"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2622,6 +2634,8 @@ namespace BookWorld {
                 base.Columns.Add(this.columnДата_Рождения);
                 this.columnТелефон = new global::System.Data.DataColumn("Телефон", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnТелефон);
+                this.columnДолжность = new global::System.Data.DataColumn("Должность", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnДолжность);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnКод_Сотрудника}, true));
                 this.columnКод_Сотрудника.AutoIncrement = true;
@@ -2634,6 +2648,8 @@ namespace BookWorld {
                 this.columnФИО.MaxLength = 120;
                 this.columnПринят.AllowDBNull = false;
                 this.columnТелефон.MaxLength = 12;
+                this.columnДолжность.AllowDBNull = false;
+                this.columnДолжность.MaxLength = 40;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4229,6 +4245,17 @@ namespace BookWorld {
                 }
                 set {
                     this[this.tableСотрудники.ТелефонColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Должность {
+                get {
+                    return ((string)(this[this.tableСотрудники.ДолжностьColumn]));
+                }
+                set {
+                    this[this.tableСотрудники.ДолжностьColumn] = value;
                 }
             }
             
@@ -7038,10 +7065,11 @@ SELECT Код_Товара, Количество, Цена, Чек FROM Сост
             tableMapping.ColumnMappings.Add("Уволен", "Уволен");
             tableMapping.ColumnMappings.Add("Дата_Рождения", "Дата_Рождения");
             tableMapping.ColumnMappings.Add("Телефон", "Телефон");
+            tableMapping.ColumnMappings.Add("Должность", "Должность");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Сотрудники] WHERE (([Код_Сотрудника] = @Original_Код_Сотрудника) AND ([ФИО] = @Original_ФИО) AND ([Принят] = @Original_Принят) AND ((@IsNull_Уволен = 1 AND [Уволен] IS NULL) OR ([Уволен] = @Original_Уволен)) AND ((@IsNull_Дата_Рождения = 1 AND [Дата_Рождения] IS NULL) OR ([Дата_Рождения] = @Original_Дата_Рождения)) AND ((@IsNull_Телефон = 1 AND [Телефон] IS NULL) OR ([Телефон] = @Original_Телефон)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Сотрудники] WHERE (([Код_Сотрудника] = @Original_Код_Сотрудника) AND ([ФИО] = @Original_ФИО) AND ([Принят] = @Original_Принят) AND ((@IsNull_Уволен = 1 AND [Уволен] IS NULL) OR ([Уволен] = @Original_Уволен)) AND ((@IsNull_Дата_Рождения = 1 AND [Дата_Рождения] IS NULL) OR ([Дата_Рождения] = @Original_Дата_Рождения)) AND ((@IsNull_Телефон = 1 AND [Телефон] IS NULL) OR ([Телефон] = @Original_Телефон)) AND ([Должность] = @Original_Должность))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Код_Сотрудника", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Код_Сотрудника", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -7052,26 +7080,29 @@ SELECT Код_Товара, Количество, Цена, Чек FROM Сост
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Дата_Рождения", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата_Рождения", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Телефон", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Телефон", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Должность", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Должность", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Сотрудники] ([ФИО], [Принят], [Уволен], [Дата_Рождения], [Телефон]) VALUES (@ФИО, @Принят, @Уволен, @Дата_Рождения, @Телефон);
-SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата_Рождения, Телефон FROM Сотрудники WHERE (Код_Сотрудника = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Сотрудники] ([ФИО], [Принят], [Уволен], [Дата_Рождения], [Телефон], [Должность]) VALUES (@ФИО, @Принят, @Уволен, @Дата_Рождения, @Телефон, @Должность);
+SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата_Рождения, Телефон, Должность FROM Сотрудники WHERE (Код_Сотрудника = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Принят", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Принят", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Уволен", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Уволен", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Дата_Рождения", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата_Рождения", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Телефон", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Должность", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Должность", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Сотрудники] SET [ФИО] = @ФИО, [Принят] = @Принят, [Уволен] = @Уволен, [Дата_Рождения] = @Дата_Рождения, [Телефон] = @Телефон WHERE (([Код_Сотрудника] = @Original_Код_Сотрудника) AND ([ФИО] = @Original_ФИО) AND ([Принят] = @Original_Принят) AND ((@IsNull_Уволен = 1 AND [Уволен] IS NULL) OR ([Уволен] = @Original_Уволен)) AND ((@IsNull_Дата_Рождения = 1 AND [Дата_Рождения] IS NULL) OR ([Дата_Рождения] = @Original_Дата_Рождения)) AND ((@IsNull_Телефон = 1 AND [Телефон] IS NULL) OR ([Телефон] = @Original_Телефон)));
-SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата_Рождения, Телефон FROM Сотрудники WHERE (Код_Сотрудника = @Код_Сотрудника)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Сотрудники] SET [ФИО] = @ФИО, [Принят] = @Принят, [Уволен] = @Уволен, [Дата_Рождения] = @Дата_Рождения, [Телефон] = @Телефон, [Должность] = @Должность WHERE (([Код_Сотрудника] = @Original_Код_Сотрудника) AND ([ФИО] = @Original_ФИО) AND ([Принят] = @Original_Принят) AND ((@IsNull_Уволен = 1 AND [Уволен] IS NULL) OR ([Уволен] = @Original_Уволен)) AND ((@IsNull_Дата_Рождения = 1 AND [Дата_Рождения] IS NULL) OR ([Дата_Рождения] = @Original_Дата_Рождения)) AND ((@IsNull_Телефон = 1 AND [Телефон] IS NULL) OR ([Телефон] = @Original_Телефон)) AND ([Должность] = @Original_Должность));
+SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата_Рождения, Телефон, Должность FROM Сотрудники WHERE (Код_Сотрудника = @Код_Сотрудника)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Принят", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Принят", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Уволен", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Уволен", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Дата_Рождения", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата_Рождения", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Телефон", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Должность", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Должность", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Код_Сотрудника", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Код_Сотрудника", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Принят", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Принят", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -7081,6 +7112,7 @@ SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Дата_Рождения", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Дата_Рождения", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Телефон", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Телефон", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Телефон", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Должность", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Должность", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Код_Сотрудника", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Код_Сотрудника", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -7097,8 +7129,8 @@ SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата_Рождения, Телефон FROM dbo.Сотру" +
-                "дники";
+            this._commandCollection[0].CommandText = "SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата_Рождения, Телефон, Должность FRO" +
+                "M Сотрудники";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7159,7 +7191,7 @@ SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Код_Сотрудника, string Original_ФИО, System.DateTime Original_Принят, global::System.Nullable<global::System.DateTime> Original_Уволен, global::System.Nullable<global::System.DateTime> Original_Дата_Рождения, string Original_Телефон) {
+        public virtual int Delete(int Original_Код_Сотрудника, string Original_ФИО, System.DateTime Original_Принят, global::System.Nullable<global::System.DateTime> Original_Уволен, global::System.Nullable<global::System.DateTime> Original_Дата_Рождения, string Original_Телефон, string Original_Должность) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Код_Сотрудника));
             if ((Original_ФИО == null)) {
                 throw new global::System.ArgumentNullException("Original_ФИО");
@@ -7192,6 +7224,12 @@ SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Телефон));
             }
+            if ((Original_Должность == null)) {
+                throw new global::System.ArgumentNullException("Original_Должность");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_Должность));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7212,7 +7250,7 @@ SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ФИО, System.DateTime Принят, global::System.Nullable<global::System.DateTime> Уволен, global::System.Nullable<global::System.DateTime> Дата_Рождения, string Телефон) {
+        public virtual int Insert(string ФИО, System.DateTime Принят, global::System.Nullable<global::System.DateTime> Уволен, global::System.Nullable<global::System.DateTime> Дата_Рождения, string Телефон, string Должность) {
             if ((ФИО == null)) {
                 throw new global::System.ArgumentNullException("ФИО");
             }
@@ -7238,6 +7276,12 @@ SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Телефон));
             }
+            if ((Должность == null)) {
+                throw new global::System.ArgumentNullException("Должность");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Должность));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7258,7 +7302,7 @@ SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ФИО, System.DateTime Принят, global::System.Nullable<global::System.DateTime> Уволен, global::System.Nullable<global::System.DateTime> Дата_Рождения, string Телефон, int Original_Код_Сотрудника, string Original_ФИО, System.DateTime Original_Принят, global::System.Nullable<global::System.DateTime> Original_Уволен, global::System.Nullable<global::System.DateTime> Original_Дата_Рождения, string Original_Телефон, int Код_Сотрудника) {
+        public virtual int Update(string ФИО, System.DateTime Принят, global::System.Nullable<global::System.DateTime> Уволен, global::System.Nullable<global::System.DateTime> Дата_Рождения, string Телефон, string Должность, int Original_Код_Сотрудника, string Original_ФИО, System.DateTime Original_Принят, global::System.Nullable<global::System.DateTime> Original_Уволен, global::System.Nullable<global::System.DateTime> Original_Дата_Рождения, string Original_Телефон, string Original_Должность, int Код_Сотрудника) {
             if ((ФИО == null)) {
                 throw new global::System.ArgumentNullException("ФИО");
             }
@@ -7284,39 +7328,51 @@ SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Телефон));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Код_Сотрудника));
+            if ((Должность == null)) {
+                throw new global::System.ArgumentNullException("Должность");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Должность));
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Код_Сотрудника));
             if ((Original_ФИО == null)) {
                 throw new global::System.ArgumentNullException("Original_ФИО");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_ФИО));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_ФИО));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_Принят));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((System.DateTime)(Original_Принят));
             if ((Original_Уволен.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_Уволен.Value));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_Уволен.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((Original_Дата_Рождения.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Original_Дата_Рождения.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_Дата_Рождения.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             if ((Original_Телефон == null)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_Телефон));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Телефон));
             }
-            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Код_Сотрудника));
+            if ((Original_Должность == null)) {
+                throw new global::System.ArgumentNullException("Original_Должность");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Должность));
+            }
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Код_Сотрудника));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7337,8 +7393,8 @@ SELECT Код_Сотрудника, ФИО, Принят, Уволен, Дата
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ФИО, System.DateTime Принят, global::System.Nullable<global::System.DateTime> Уволен, global::System.Nullable<global::System.DateTime> Дата_Рождения, string Телефон, int Original_Код_Сотрудника, string Original_ФИО, System.DateTime Original_Принят, global::System.Nullable<global::System.DateTime> Original_Уволен, global::System.Nullable<global::System.DateTime> Original_Дата_Рождения, string Original_Телефон) {
-            return this.Update(ФИО, Принят, Уволен, Дата_Рождения, Телефон, Original_Код_Сотрудника, Original_ФИО, Original_Принят, Original_Уволен, Original_Дата_Рождения, Original_Телефон, Original_Код_Сотрудника);
+        public virtual int Update(string ФИО, System.DateTime Принят, global::System.Nullable<global::System.DateTime> Уволен, global::System.Nullable<global::System.DateTime> Дата_Рождения, string Телефон, string Должность, int Original_Код_Сотрудника, string Original_ФИО, System.DateTime Original_Принят, global::System.Nullable<global::System.DateTime> Original_Уволен, global::System.Nullable<global::System.DateTime> Original_Дата_Рождения, string Original_Телефон, string Original_Должность) {
+            return this.Update(ФИО, Принят, Уволен, Дата_Рождения, Телефон, Должность, Original_Код_Сотрудника, Original_ФИО, Original_Принят, Original_Уволен, Original_Дата_Рождения, Original_Телефон, Original_Должность, Original_Код_Сотрудника);
         }
     }
     

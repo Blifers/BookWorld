@@ -189,7 +189,7 @@ namespace BookWorld.Продажа
         private void ApplyDiscount()
         {
             GetFullCost();
-            fullcost = fullcost * Data.Discount;
+            fullcost = fullcost * Properties.Settings.Default.Discount;
         }
 
         private void FormDocButton_Click(object sender, EventArgs e)
@@ -259,7 +259,7 @@ namespace BookWorld.Продажа
                     PcodeOfGood = new SqlParameter("codeOfGood", codeOfGood);
 
                     if (hasCard)
-                        priceOfSell = Convert.ToDouble(чекdataGridView.Rows[i].Cells[2].Value) * Data.Discount;
+                        priceOfSell = Convert.ToDouble(чекdataGridView.Rows[i].Cells[2].Value) * Properties.Settings.Default.Discount;
                     else
                         priceOfSell = Convert.ToDouble(чекdataGridView.Rows[i].Cells[2].Value);
                     PpriceOfSell = new SqlParameter("priceOfSell", priceOfSell);

@@ -123,6 +123,7 @@
             this.просмотрДокументовToolStripMenuItem.Name = "просмотрДокументовToolStripMenuItem";
             this.просмотрДокументовToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.просмотрДокументовToolStripMenuItem.Text = "Просмотр документов";
+            this.просмотрДокументовToolStripMenuItem.Click += new System.EventHandler(this.просмотрДокументовToolStripMenuItem_Click);
             // 
             // приходToolStripMenuItem
             // 
@@ -145,6 +146,7 @@
             this.просмотрДокументовToolStripMenuItem1.Name = "просмотрДокументовToolStripMenuItem1";
             this.просмотрДокументовToolStripMenuItem1.Size = new System.Drawing.Size(199, 22);
             this.просмотрДокументовToolStripMenuItem1.Text = "Просмотр документов";
+            this.просмотрДокументовToolStripMenuItem1.Click += new System.EventHandler(this.просмотрДокументовToolStripMenuItem1_Click);
             // 
             // отчётыToolStripMenuItem
             // 

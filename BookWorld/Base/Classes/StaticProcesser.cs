@@ -137,6 +137,22 @@ namespace BookWorld.Base
             Connection.Close();
             Command.Parameters.Clear();
         }
+        public static void ExecuteCommand(string commandText, SqlParameter p1, SqlParameter p2, SqlParameter p3, SqlParameter p4, SqlParameter p5, SqlParameter p6)
+        {
+            SqlCommand Command = new SqlCommand();
+            Command.Connection = Connection;
+            Command.CommandText = commandText;
+            Command.Parameters.Add(p1);
+            Command.Parameters.Add(p2);
+            Command.Parameters.Add(p3);
+            Command.Parameters.Add(p4);
+            Command.Parameters.Add(p5);
+            Command.Parameters.Add(p6);
+            Connection.Open();
+            Command.ExecuteNonQuery();
+            Connection.Close();
+            Command.Parameters.Clear();
+        }
 
         public static void FillDataGrid(string command,DataGridView dataGrid)
         {

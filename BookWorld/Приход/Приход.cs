@@ -135,7 +135,7 @@ namespace BookWorld.Приход
 
         private void BuyPriceNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            double sellPrice = (double)(BuyPriceNumericUpDown.Value * Data.Percentage);
+            double sellPrice = (double)(BuyPriceNumericUpDown.Value * Properties.Settings.Default.Percentage);
             int c = (int)sellPrice;
             c = c / 10;
             c = c * 10;

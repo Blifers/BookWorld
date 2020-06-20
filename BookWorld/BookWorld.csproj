@@ -73,17 +73,41 @@
       <DependentUpon>BookWorldDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ДляУправляющего\ДобавитьИзменитьСотрудники.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ДляУправляющего\ДобавитьИзменитьСотрудники.Designer.cs">
+      <DependentUpon>ДобавитьИзменитьСотрудники.cs</DependentUpon>
+    </Compile>
     <Compile Include="ДляУправляющего\Отчеты.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ДляУправляющего\Отчеты.Designer.cs">
       <DependentUpon>Отчеты.cs</DependentUpon>
     </Compile>
+    <Compile Include="ДляУправляющего\Сотрудники.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ДляУправляющего\Сотрудники.Designer.cs">
+      <DependentUpon>Сотрудники.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ДляУправляющего\Управление.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ДляУправляющего\Управление.Designer.cs">
+      <DependentUpon>Управление.cs</DependentUpon>
+    </Compile>
     <Compile Include="Приход\Приход.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Приход\Приход.Designer.cs">
       <DependentUpon>Приход.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Приход\ПросмотрПриходов.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Приход\ПросмотрПриходов.Designer.cs">
+      <DependentUpon>ПросмотрПриходов.cs</DependentUpon>
     </Compile>
     <Compile Include="Продажа\ВыборКоличестваТовара.cs">
       <SubType>Form</SubType>
@@ -96,6 +120,12 @@
     </Compile>
     <Compile Include="Продажа\НоваяПродажа.Designer.cs">
       <DependentUpon>НоваяПродажа.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Продажа\ПросмотрПродаж.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Продажа\ПросмотрПродаж.Designer.cs">
+      <DependentUpon>ПросмотрПродаж.cs</DependentUpon>
     </Compile>
     <Compile Include="Справочники\Жанры\ДобавитьИзменитьЖанр.cs">
       <SubType>Form</SubType>
@@ -167,17 +197,32 @@
     <EmbeddedResource Include="Base\ОсновноеМеню.resx">
       <DependentUpon>ОсновноеМеню.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ДляУправляющего\ДобавитьИзменитьСотрудники.resx">
+      <DependentUpon>ДобавитьИзменитьСотрудники.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ДляУправляющего\Отчеты.resx">
       <DependentUpon>Отчеты.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ДляУправляющего\Сотрудники.resx">
+      <DependentUpon>Сотрудники.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ДляУправляющего\Управление.resx">
+      <DependentUpon>Управление.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Приход\Приход.resx">
       <DependentUpon>Приход.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Приход\ПросмотрПриходов.resx">
+      <DependentUpon>ПросмотрПриходов.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Продажа\ВыборКоличестваТовара.resx">
       <DependentUpon>ВыборКоличестваТовара.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Продажа\НоваяПродажа.resx">
       <DependentUpon>НоваяПродажа.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Продажа\ПросмотрПродаж.resx">
+      <DependentUpon>ПросмотрПродаж.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Справочники\Жанры\ДобавитьИзменитьЖанр.resx">
       <DependentUpon>ДобавитьИзменитьЖанр.cs</DependentUpon>
@@ -206,6 +251,7 @@
     <EmbeddedResource Include="Справочники\Товары\СправочникТовары.resx">
       <DependentUpon>СправочникТовары.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="BookWorldDataSet.xsc">
       <DependentUpon>BookWorldDataSet.xsd</DependentUpon>
     </None>

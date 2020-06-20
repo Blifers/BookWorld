@@ -45,6 +45,9 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FiredDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bookWorldDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникиBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникиDataGridView)).BeginInit();
@@ -78,6 +81,7 @@
             this.FireButton.TabIndex = 4;
             this.FireButton.Text = "Уволить";
             this.FireButton.UseVisualStyleBackColor = true;
+            this.FireButton.Click += new System.EventHandler(this.FireButton_Click);
             // 
             // CloseButton
             // 
@@ -179,12 +183,40 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "Должность";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
+            // FiredDatePicker
+            // 
+            this.FiredDatePicker.Location = new System.Drawing.Point(761, 208);
+            this.FiredDatePicker.Name = "FiredDatePicker";
+            this.FiredDatePicker.Size = new System.Drawing.Size(139, 20);
+            this.FiredDatePicker.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(758, 161);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(144, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Выберите дату увольнения";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(758, 185);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(146, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "И нажмите кнопку еще раз";
+            // 
             // Сотрудники
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(908, 348);
             this.ControlBox = false;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.FiredDatePicker);
             this.Controls.Add(this.сотрудникиDataGridView);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.FireButton);
@@ -199,6 +231,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникиBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникиDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -219,5 +252,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DateTimePicker FiredDatePicker;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

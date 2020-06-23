@@ -29,8 +29,6 @@ namespace BookWorld.Справочники.Товары
             this.тип_ТовараTableAdapter.Fill(this.bookWorldDataSet.Тип_Товара);
             TypeComboBox.Text = "";
             GenreComboBox.Text = "";
-            //TypeComboBox.SelectedIndex = 0;
-            //GenreComboBox.SelectedIndex = 0;
         }
 
         private void BuyPriceNumericUpDown_ValueChanged(object sender, EventArgs e)

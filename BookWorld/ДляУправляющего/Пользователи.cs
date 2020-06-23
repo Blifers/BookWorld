@@ -19,8 +19,6 @@ namespace BookWorld.ДляУправляющего
 
         private void Пользователи_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "bookWorldDataSet.Пользователи". При необходимости она может быть перемещена или удалена.
-            this.пользователиTableAdapter.Fill(this.bookWorldDataSet.Пользователи);
             this.пользователиTableAdapter.Fill(this.bookWorldDataSet.Пользователи);
         }
 
@@ -46,14 +44,6 @@ namespace BookWorld.ДляУправляющего
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Dispose();
-        }
-
-        private void пользователиBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.пользователиBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.bookWorldDataSet);
-
         }
     }
 }

@@ -26,8 +26,6 @@ namespace BookWorld.Приход
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            //Написать сохранение сессии???
-            //Or at least ask before closing...
             this.Dispose();
         }
 
@@ -41,7 +39,7 @@ namespace BookWorld.Приход
             dataGridView1.Columns[3].Width = 270;
             dataGridView1.Columns[4].Width = 50;
             dataGridView1.Columns[5].Width = 56;
-            //Создание таблицы для состава прихода
+            
             IncomingGoodsDataTable.Columns.Add("Код товара", typeof(int));
             IncomingGoodsDataTable.Columns.Add("Наименование", typeof(string));
             IncomingGoodsDataTable.Columns.Add("Цена закупки", typeof(double));
@@ -57,10 +55,7 @@ namespace BookWorld.Приход
             dataGridView2.Columns[4].Width = 80;
         }
 
-
-        //Должна быть проверка на существование такого товара!!!!!
-        //Check it later please!
-        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+      private void SearchTextBox_TextChanged(object sender, EventArgs e)
         {
             if (SearchTextBox.Text !="" && SearchTextBox.Text!=" ")
             {
